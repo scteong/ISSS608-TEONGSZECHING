@@ -1,0 +1,22 @@
+---
+title: "Hands-on Exercise 1"
+author: "Teong Sze Ching"
+date: "January 10, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Overview
+
+## Getting Started
+'''{r}
+pacman: :p_load(tidyverse)
+
+
+# The Data
+
+# First Visualization
