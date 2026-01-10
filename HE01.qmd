@@ -12,6 +12,8 @@ execute:
 
 # Overview
 
+This is my first attempt to create the coursework website. 
+
 ## Getting Started
 '''{r}
 pacman: :p_load(tidyverse)
