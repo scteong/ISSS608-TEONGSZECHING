@@ -10,16 +10,88 @@ execute:
   freeze: true
 ---
 
-# Overview
+# Lesson 1: A Layered Grammar of Graphics: ggplot2 methods
 
-Lesson 1: A Layered Grammar of Graphics: ggplot2 methods
-
-## Getting Started
+## 1.0 Getting Started
+Before we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.
 ```{r}
 pacman::p_load(tidyverse)
-exam_data <- read_csv("chap01/data/Exam_data.csv")
 ```
 
-# The Data
+# 2.0 The Data
+Loading the data to the R environment by using read_csv() function of readr package
+```{r}
+exam_data <- read_csv("chap01/data/Exam_data.csv")
+```
+The data in the file includes (1)Year end examination grades of a cohort of primary 3 students from a local school. (2) There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type. The categorical attributes are: ID, CLASS, GENDER and RACE. The continuous attributes are: MATHS, ENGLISH and SCIENCE.
 
-# First Visualization
+# 3.0 Visualization - Math Grades 
+## 3.1 By Dot Plot
+```{r}
+ggplot(data=exam_data, aes(x=MATHS)) + geom_dotplot(binwidth=2.5, dotsize=0.5) + scale_y_continuous(NULL,breaks=NULL)
+
+```
+
+## 3.2 By Histogram
+```{r}
+ggplot(data=exam_data, aes(x=MATHS, fill=GENDER)) + geom_histogram(bins=20,color="grey30")
+
+```
+
+## 3.3 By Density
+```{r}
+ggplot(data=exam_data, aes(x=MATHS, color=GENDER)) + geom_density()
+
+```
+
+## 3.4 By Box Plot
+```{r}
+ggplot(data=exam_data, aes(y=MATHS, x=GENDER)) + geom_boxplot() + stat_summary(geom="point", fun="mean",color="red",size=4)
+
+```
+```{r}
+ggplot(data=exam_data, aes(y=MATHS, x=GENDER)) + geom_boxplot() + geom_point(position="jitter",size=0.5)
+
+```
+
+## 3.5 By Violin Plot
+```{r}
+ggplot(data=exam_data, aes(y=MATHS, x=GENDER)) + geom_violin()
+
+```
+
+## 3.6 By Trellis Plot
+```{r}
+ggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20) + facet_wrap(~ CLASS)
+
+```
+
+```{r}
+ggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20) + facet_grid(~ CLASS)
+
+```
+
+# 4.0 Visualization - Race
+## 4.1 Race by Vertical Bar Chart
+```{r}
+ggplot(data=exam_data, aes(x=RACE)) + geom_bar()
+
+```
+
+## 4.2 Race by Horizontal Bar Chart
+```{r}
+ggplot(data=exam_data, aes(x=RACE)) + geom_bar() + coord_flip() +theme_minimal()
+
+```
+
+# 5.0 Visualization - Math and English Grades 
+```{r}
+ggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm,linewidth=0.5)
+
+```
+
+## 5.1 Fixing scale of both Math and English grades from 0 to 100
+```{r}
+ggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm,size=0.5) + coord_cartesian(xlim=c(0,100),ylim=c(0,100))
+
+```

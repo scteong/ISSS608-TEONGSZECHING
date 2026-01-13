@@ -1,11 +1,7 @@
 ---
-title: "ISSS608-TEONGSZECHING"
+title: "ISSS608-- Coursework Website for TEONG SZE CHING"
 ---
 
-This is a Quarto website.
+**Welcome to my coursework website** 🙂🤗
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+Designing in progress ......

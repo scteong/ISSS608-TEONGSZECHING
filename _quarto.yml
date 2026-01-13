@@ -2,28 +2,24 @@ project:
   type: website
 
 website:
-  title: "ISSS608 - Coursework Website for TEONG SZE CHING"
+  title: "ISSS608 - TEONG SZE CHING"
   navbar:
-    background: "#e0ae24"
+    background: "#1f2937"
+    foreground: "#ffffff"
     left: 
       - text: "Hands-on Exercise"
         menu: 
           - text: "Hands-on Exercise 1"
             href: "HE01.html"
-      - text: "In-class Exercise"
-        menu: 
-          - text: "In-class Exercise 1"
-            href: "IE01.html"
+ 
     right:
       - href: index.qmd
         text: Home
-      - about.qmd
 
 format:
   html:
     theme:
-      - solar
-      - brand
+      - cosmo
     css: styles.css
     toc: true
 

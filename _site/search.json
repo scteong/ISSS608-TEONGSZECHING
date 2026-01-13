@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ISSS608-TEONGSZECHING",
+    "title": "ISSS608– Coursework Website for TEONG SZE CHING",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Welcome to my coursework website 🙂🤗\nDesigning in progress ……"
   },
   {
     "objectID": "about.html",
@@ -18,13 +18,76 @@
     "href": "HE01.html",
     "title": "Hands-on Exercise 1",
     "section": "",
-    "text": "Lesson 1: A Layered Grammar of Graphics: ggplot2 methods\n\n\n\npacman::p_load(tidyverse)"
+    "text": "Before we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\n\npacman::p_load(tidyverse)"
   },
   {
     "objectID": "HE01.html#getting-started",
     "href": "HE01.html#getting-started",
     "title": "Hands-on Exercise 1",
     "section": "",
-    "text": "pacman::p_load(tidyverse)"
+    "text": "Before we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.\n\npacman::p_load(tidyverse)"
+  },
+  {
+    "objectID": "HE01.html#math-result-by-dot-plot",
+    "href": "HE01.html#math-result-by-dot-plot",
+    "title": "Hands-on Exercise 1",
+    "section": "Math result by Dot Plot",
+    "text": "Math result by Dot Plot\n\nggplot(data=exam_data, aes(x=MATHS)) + geom_dotplot(binwidth=2.5, dotsize=0.5) + scale_y_continuous(NULL,breaks=NULL)"
+  },
+  {
+    "objectID": "HE01.html#math-result-by-histogram",
+    "href": "HE01.html#math-result-by-histogram",
+    "title": "Hands-on Exercise 1",
+    "section": "Math result by Histogram",
+    "text": "Math result by Histogram\n\nggplot(data=exam_data, aes(x=MATHS, fill=GENDER)) + geom_histogram(bins=20,color=\"grey30\")"
+  },
+  {
+    "objectID": "HE01.html#math-result-by-density",
+    "href": "HE01.html#math-result-by-density",
+    "title": "Hands-on Exercise 1",
+    "section": "Math result by Density",
+    "text": "Math result by Density\n\nggplot(data=exam_data, aes(x=MATHS, color=GENDER)) + geom_density()"
+  },
+  {
+    "objectID": "HE01.html#math-result-by-box-plot",
+    "href": "HE01.html#math-result-by-box-plot",
+    "title": "Hands-on Exercise 1",
+    "section": "Math result by Box Plot",
+    "text": "Math result by Box Plot\n\nggplot(data=exam_data, aes(y=MATHS, x=GENDER)) + geom_boxplot() + stat_summary(geom=\"point\", fun=\"mean\",color=\"red\",size=4)\n\n\n\n\n\n\n\n\n\nggplot(data=exam_data, aes(y=MATHS, x=GENDER)) + geom_boxplot() + geom_point(position=\"jitter\",size=0.5)"
+  },
+  {
+    "objectID": "HE01.html#math-result-by-violin-plot",
+    "href": "HE01.html#math-result-by-violin-plot",
+    "title": "Hands-on Exercise 1",
+    "section": "Math result by Violin Plot",
+    "text": "Math result by Violin Plot\n\nggplot(data=exam_data, aes(y=MATHS, x=GENDER)) + geom_violin()"
+  },
+  {
+    "objectID": "HE01.html#math-result-by-trellis-plot",
+    "href": "HE01.html#math-result-by-trellis-plot",
+    "title": "Hands-on Exercise 1",
+    "section": "Math result by Trellis Plot",
+    "text": "Math result by Trellis Plot\n\nggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20) + facet_wrap(~ CLASS)\n\n\n\n\n\n\n\n\n\nggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20) + facet_grid(~ CLASS)"
+  },
+  {
+    "objectID": "HE01.html#race-by-vertical-bar-chart",
+    "href": "HE01.html#race-by-vertical-bar-chart",
+    "title": "Hands-on Exercise 1",
+    "section": "Race by Vertical Bar Chart",
+    "text": "Race by Vertical Bar Chart\n\nggplot(data=exam_data, aes(x=RACE)) + geom_bar()"
+  },
+  {
+    "objectID": "HE01.html#race-by-horizontal-bar-chart",
+    "href": "HE01.html#race-by-horizontal-bar-chart",
+    "title": "Hands-on Exercise 1",
+    "section": "Race by Horizontal Bar Chart",
+    "text": "Race by Horizontal Bar Chart\n\nggplot(data=exam_data, aes(x=RACE)) + geom_bar() + coord_flip() +theme_minimal()"
+  },
+  {
+    "objectID": "HE01.html#fixing-both-math-and-english-grades-from-0-to-100",
+    "href": "HE01.html#fixing-both-math-and-english-grades-from-0-to-100",
+    "title": "Hands-on Exercise 1",
+    "section": "Fixing both Math and English grades from 0 to 100",
+    "text": "Fixing both Math and English grades from 0 to 100\n\nggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm,size=0.5) + coord_cartesian(xlim=c(0,100),ylim=c(0,100))"
   }
 ]
