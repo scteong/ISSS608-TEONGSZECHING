@@ -1,0 +1,15 @@
+{
+  "hash": "18a142985afb716c21676bb1043941a1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Hands-on Exercise 1\"\nauthor: \"Teong Sze Ching\"\ndate: \"January 13, 2026\"\ndate-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n# Overview\n\nLesson 1: A Layered Grammar of Graphics: ggplot2 methods\n\n## Getting Started\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n# The Data\n\n# First Visualization\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
