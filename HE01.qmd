@@ -1,7 +1,7 @@
 ---
 title: "Hands-on Exercise 1"
 author: "Teong Sze Ching"
-date: "January 10, 2026"
+date: "January 13, 2026"
 date-modified: "last-modified"
 execute: 
   eval: true
@@ -12,12 +12,12 @@ execute:
 
 # Overview
 
-This is my first attempt to create the coursework website. 
+Lesson 1: A Layered Grammar of Graphics: ggplot2 methods
 
 ## Getting Started
 '''{r}
 pacman: :p_load(tidyverse)
-
+'''
 
 # The Data
 

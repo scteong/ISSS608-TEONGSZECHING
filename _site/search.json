@@ -18,13 +18,13 @@
     "href": "HE01.html",
     "title": "Hands-on Exercise 1",
     "section": "",
-    "text": "This is my first attempt to create the coursework website.\n\n\n’’’{r} pacman: :p_load(tidyverse)"
+    "text": "Lesson 1: A Layered Grammar of Graphics: ggplot2 methods\n\n\n’’‘{r} pacman: :p_load(tidyverse)’’’"
   },
   {
     "objectID": "HE01.html#getting-started",
     "href": "HE01.html#getting-started",
     "title": "Hands-on Exercise 1",
     "section": "",
-    "text": "’’’{r} pacman: :p_load(tidyverse)"
+    "text": "’’‘{r} pacman: :p_load(tidyverse)’’’"
   }
 ]
