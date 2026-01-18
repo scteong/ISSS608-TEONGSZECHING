@@ -7,13 +7,6 @@
     "text": "Welcome to my coursework website 🙂🤗\nDesigning in progress ……"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "HE01.html",
     "href": "HE01.html",
     "title": "Hands-on Exercise 1",
@@ -89,5 +82,54 @@
     "title": "Hands-on Exercise 1",
     "section": "Fixing both Math and English grades from 0 to 100",
     "text": "Fixing both Math and English grades from 0 to 100\n\nggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm,size=0.5) + coord_cartesian(xlim=c(0,100),ylim=c(0,100))"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "HE02.html",
+    "href": "HE02.html",
+    "title": "Hands-on Exercise 2",
+    "section": "",
+    "text": "In this chapter, several ggplot2 extensions will be introduced to create more elegant and effective statistical graphics.\nIn this exercise, beside tidyverse, four R packages will be used. They are: - ggrepel: an R package provides geoms for ggplot2 to repel overlapping text labels. - ggthemes: an R package provides some extra themes, geoms, and scales for ‘ggplot2’. - hrbrthemes: an R package provides typography-centric themes and theme components for ggplot2. - patchwork: an R package for preparing composite figure created using ggplot2.\nCode chunk below will be used to check if these packages have been installed and also will load them onto your working R environment.\n\npacman::p_load(ggrepel, patchwork, ggthemes, tidyverse)\n\nhrbrtheme will not be loaded because it is not available. Will use ggplot2 to replace it. Link: https://cran.r-project.org/web/packages/hrbrthemes/index.html"
+  },
+  {
+    "objectID": "HE02.html#getting-started",
+    "href": "HE02.html#getting-started",
+    "title": "Hands-on Exercise 2",
+    "section": "",
+    "text": "In this chapter, several ggplot2 extensions will be introduced to create more elegant and effective statistical graphics.\nIn this exercise, beside tidyverse, four R packages will be used. They are: - ggrepel: an R package provides geoms for ggplot2 to repel overlapping text labels. - ggthemes: an R package provides some extra themes, geoms, and scales for ‘ggplot2’. - hrbrthemes: an R package provides typography-centric themes and theme components for ggplot2. - patchwork: an R package for preparing composite figure created using ggplot2.\nCode chunk below will be used to check if these packages have been installed and also will load them onto your working R environment.\n\npacman::p_load(ggrepel, patchwork, ggthemes, tidyverse)\n\nhrbrtheme will not be loaded because it is not available. Will use ggplot2 to replace it. Link: https://cran.r-project.org/web/packages/hrbrthemes/index.html"
+  },
+  {
+    "objectID": "HE02.html#without-ggrepel",
+    "href": "HE02.html#without-ggrepel",
+    "title": "Hands-on Exercise 2",
+    "section": "3.1 Without GGrepel",
+    "text": "3.1 Without GGrepel\n\nggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm, size=0.5) + geom_label(aes(label=ID), hjust=.5, vjust=-.5) + coord_cartesian(xlim=c(0,100), ylim=c(0,100)) + ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "HE02.html#with-ggrepel",
+    "href": "HE02.html#with-ggrepel",
+    "title": "Hands-on Exercise 2",
+    "section": "3.2 With GGrepel",
+    "text": "3.2 With GGrepel\n\nggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm, size=0.5) + geom_label_repel(aes(label=ID), fontface=\"bold\") + coord_cartesian(xlim=c(0,100), ylim=c(0,100)) + ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "HE02.html#using-ggplot2-theme",
+    "href": "HE02.html#using-ggplot2-theme",
+    "title": "Hands-on Exercise 2",
+    "section": "3.3 Using GGplot2 theme",
+    "text": "3.3 Using GGplot2 theme\nggplot2 comes with eight built-in themes, they are: theme_gray(), theme_bw(), theme_classic(), theme_dark(), theme_light(), theme_linedraw(), theme_minimal(), and theme_void().\n\nggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20, boundary=100, color=\"grey25\", fill=\"grey90\") + theme_gray() + ggtitle(\"Distribution of Maths score\")\n\n\n\n\n\n\n\n\n\n3.3.1 Using theme_economist()\n\nggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20, boundary=100, color=\"grey25\", fill=\"grey90\") + theme_gray() + ggtitle(\"Distribution of Maths score\") + theme_economist()\n\n\n\n\n\n\n\n\n\n\n3.3.2 Using theme_minimal() from ggplot2 (replaced it with theme_ipsum() because this is not available in the current R version)\n\nggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20, boundary=100, color=\"grey25\", fill=\"grey90\") + theme_gray() + ggtitle(\"Distribution of Maths score\") + theme_minimal(base_size = 15, base_family=\"Arial\") + theme(axis.title = element_text(size = 18), panel.grid.major.x = element_blank())"
+  },
+  {
+    "objectID": "HE02.html#using-composite-graph",
+    "href": "HE02.html#using-composite-graph",
+    "title": "Hands-on Exercise 2",
+    "section": "3.4 Using Composite graph",
+    "text": "3.4 Using Composite graph\n\n3.4.1 1st Statistical Graph - Distribution of Maths score\n\np1 &lt;- ggplot(data=exam_data, aes(x=MATHS)) + geom_histogram(bins=20,boundary=100, color=\"grey25\", fill=\"grey90\") + coord_cartesian(xlim=c(0,100)) + ggtitle(\"Distribution of Maths scores\")\n\n\n\n\n\n\n\n\n\n\n\n\n3.4.2 2nd Statistical Graph - Distribution of English score\n\np2 &lt;- ggplot(data=exam_data, aes(x=ENGLISH)) + geom_histogram(bins=20, boundary=100, color=\"grey25\", fill=\"grey90\") + coord_cartesian(xlim=c(0,100)) + ggtitle(\"Distribution of English scores\")\n\n\n\n\n\n\n\n\n\n\n\n\n3.4.3 Combine 1st and 2nd graph - Scatterplot for English vs Maths score\n\np3 &lt;- ggplot(data=exam_data, aes(x=MATHS, y=ENGLISH)) + geom_point() + geom_smooth(method=lm, size=0.5) + coord_cartesian(xlim=c(0,100), ylim=c(0,100)) + ggtitle(\"English scores versus Maths scores for Primary 3\")\n\n\n\n\n\n\n\n\n\n\n\n3.4.3.1 Creating scatterplot with insert\n\ninsert_element &lt;- patchwork::inset_element\np3 + insert_element(p2, left=0.02, bottom=0.7, right=0.5, top=1)\n\n\n\n\n\n\n\n\n\n\n\n3.4.4 Combine 2 ggplot2 graphs\n\np1+p2\n\n\n\n\n\n\n\n\n\n\n3.4.5 Combine 3 or more ggplot2 graphs\nWe can plot more complex composite by using appropriate operators. For example, the composite figure below is plotted by using:\n“/” operator to stack two ggplot2 graphs, “|” operator to place the plots beside each other, “()” operator the define the sequence of the plotting.\n\np1/p2 | p3\n\n\n\n\n\n\n\n\n\n\n3.4.6 Creating a composite figure by using patchwork and ggtheme\n\npatchwork &lt;- (p1 / p2) | p3\npatchwork & theme_economist()"
   }
 ]

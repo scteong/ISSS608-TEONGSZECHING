@@ -11,7 +11,8 @@ website:
         menu: 
           - text: "Hands-on Exercise 1"
             href: "HE01.html"
- 
+          - text: "Hands-on Exercise 2"
+            href: "HE02.html"
     right:
       - href: index.qmd
         text: Home

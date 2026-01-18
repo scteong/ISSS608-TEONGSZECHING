@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Teong Sze Ching">
-<meta name="dcterms.date" content="2026-01-13">
+<meta name="dcterms.date" content="2026-01-18">
 
-<title>Hands-on Exercise 1 – ISSS608 - TEONG SZE CHING</title>
+<title>Hands-on Exercise 2 – ISSS608 - TEONG SZE CHING</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,28 +164,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lesson-1-a-layered-grammar-of-graphics-ggplot2-methods" id="toc-lesson-1-a-layered-grammar-of-graphics-ggplot2-methods" class="nav-link active" data-scroll-target="#lesson-1-a-layered-grammar-of-graphics-ggplot2-methods">Lesson 1: A Layered Grammar of Graphics: ggplot2 methods</a>
+  <li><a href="#lesson-2-beyond-ggplot2-fundamentals" id="toc-lesson-2-beyond-ggplot2-fundamentals" class="nav-link active" data-scroll-target="#lesson-2-beyond-ggplot2-fundamentals">Lesson 2: Beyond ggplot2 Fundamentals</a>
   <ul class="collapse">
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">1.0 Getting Started</a></li>
   </ul></li>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
-  <li><a href="#first-visualization---math-result" id="toc-first-visualization---math-result" class="nav-link" data-scroll-target="#first-visualization---math-result">First Visualization - Math result</a>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">2.0 The Data</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">3.0 Visualization</a>
   <ul class="collapse">
-  <li><a href="#math-result-by-dot-plot" id="toc-math-result-by-dot-plot" class="nav-link" data-scroll-target="#math-result-by-dot-plot">Math result by Dot Plot</a></li>
-  <li><a href="#math-result-by-histogram" id="toc-math-result-by-histogram" class="nav-link" data-scroll-target="#math-result-by-histogram">Math result by Histogram</a></li>
-  <li><a href="#math-result-by-density" id="toc-math-result-by-density" class="nav-link" data-scroll-target="#math-result-by-density">Math result by Density</a></li>
-  <li><a href="#math-result-by-box-plot" id="toc-math-result-by-box-plot" class="nav-link" data-scroll-target="#math-result-by-box-plot">Math result by Box Plot</a></li>
-  <li><a href="#math-result-by-violin-plot" id="toc-math-result-by-violin-plot" class="nav-link" data-scroll-target="#math-result-by-violin-plot">Math result by Violin Plot</a></li>
-  <li><a href="#math-result-by-trellis-plot" id="toc-math-result-by-trellis-plot" class="nav-link" data-scroll-target="#math-result-by-trellis-plot">Math result by Trellis Plot</a></li>
+  <li><a href="#without-ggrepel" id="toc-without-ggrepel" class="nav-link" data-scroll-target="#without-ggrepel">3.1 Without GGrepel</a></li>
+  <li><a href="#with-ggrepel" id="toc-with-ggrepel" class="nav-link" data-scroll-target="#with-ggrepel">3.2 With GGrepel</a></li>
+  <li><a href="#using-ggplot2-theme" id="toc-using-ggplot2-theme" class="nav-link" data-scroll-target="#using-ggplot2-theme">3.3 Using GGplot2 theme</a>
+  <ul class="collapse">
+  <li><a href="#using-theme_economist" id="toc-using-theme_economist" class="nav-link" data-scroll-target="#using-theme_economist">3.3.1 Using theme_economist()</a></li>
+  <li><a href="#using-theme_minimal-from-ggplot2-replaced-it-with-theme_ipsum-because-this-is-not-available-in-the-current-r-version" id="toc-using-theme_minimal-from-ggplot2-replaced-it-with-theme_ipsum-because-this-is-not-available-in-the-current-r-version" class="nav-link" data-scroll-target="#using-theme_minimal-from-ggplot2-replaced-it-with-theme_ipsum-because-this-is-not-available-in-the-current-r-version">3.3.2 Using theme_minimal() from ggplot2 (replaced it with theme_ipsum() because this is not available in the current R version)</a></li>
   </ul></li>
-  <li><a href="#second-visualization---by-race" id="toc-second-visualization---by-race" class="nav-link" data-scroll-target="#second-visualization---by-race">Second Visualization - By Race</a>
+  <li><a href="#using-composite-graph" id="toc-using-composite-graph" class="nav-link" data-scroll-target="#using-composite-graph">3.4 Using Composite graph</a>
   <ul class="collapse">
-  <li><a href="#race-by-vertical-bar-chart" id="toc-race-by-vertical-bar-chart" class="nav-link" data-scroll-target="#race-by-vertical-bar-chart">Race by Vertical Bar Chart</a></li>
-  <li><a href="#race-by-horizontal-bar-chart" id="toc-race-by-horizontal-bar-chart" class="nav-link" data-scroll-target="#race-by-horizontal-bar-chart">Race by Horizontal Bar Chart</a></li>
+  <li><a href="#st-statistical-graph---distribution-of-maths-score" id="toc-st-statistical-graph---distribution-of-maths-score" class="nav-link" data-scroll-target="#st-statistical-graph---distribution-of-maths-score">3.4.1 1st Statistical Graph - Distribution of Maths score</a></li>
+  <li><a href="#nd-statistical-graph---distribution-of-english-score" id="toc-nd-statistical-graph---distribution-of-english-score" class="nav-link" data-scroll-target="#nd-statistical-graph---distribution-of-english-score">3.4.2 2nd Statistical Graph - Distribution of English score</a></li>
+  <li><a href="#combine-1st-and-2nd-graph---scatterplot-for-english-vs-maths-score" id="toc-combine-1st-and-2nd-graph---scatterplot-for-english-vs-maths-score" class="nav-link" data-scroll-target="#combine-1st-and-2nd-graph---scatterplot-for-english-vs-maths-score">3.4.3 Combine 1st and 2nd graph - Scatterplot for English vs Maths score</a></li>
+  <li><a href="#combine-2-ggplot2-graphs" id="toc-combine-2-ggplot2-graphs" class="nav-link" data-scroll-target="#combine-2-ggplot2-graphs">3.4.4 Combine 2 ggplot2 graphs</a></li>
+  <li><a href="#combine-3-or-more-ggplot2-graphs" id="toc-combine-3-or-more-ggplot2-graphs" class="nav-link" data-scroll-target="#combine-3-or-more-ggplot2-graphs">3.4.5 Combine 3 or more ggplot2 graphs</a></li>
+  <li><a href="#creating-a-composite-figure-by-using-patchwork-and-ggtheme" id="toc-creating-a-composite-figure-by-using-patchwork-and-ggtheme" class="nav-link" data-scroll-target="#creating-a-composite-figure-by-using-patchwork-and-ggtheme">3.4.6 Creating a composite figure by using patchwork and ggtheme</a></li>
   </ul></li>
-  <li><a href="#third-visualization---math-and-english-grades" id="toc-third-visualization---math-and-english-grades" class="nav-link" data-scroll-target="#third-visualization---math-and-english-grades">Third Visualization - Math and English Grades</a>
-  <ul class="collapse">
-  <li><a href="#fixing-both-math-and-english-grades-from-0-to-100" id="toc-fixing-both-math-and-english-grades-from-0-to-100" class="nav-link" data-scroll-target="#fixing-both-math-and-english-grades-from-0-to-100">Fixing both Math and English grades from 0 to 100</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -195,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Hands-on Exercise 1</h1>
+<h1 class="title">Hands-on Exercise 2</h1>
 </div>
 
 
@@ -212,14 +213,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 13, 2026</p>
+      <p class="date">January 18, 2026</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 13, 2026</p>
+      <p class="date-modified">January 18, 2026</p>
     </div>
   </div>
     
@@ -230,180 +231,200 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="lesson-1-a-layered-grammar-of-graphics-ggplot2-methods" class="level1">
-<h1>Lesson 1: A Layered Grammar of Graphics: ggplot2 methods</h1>
+<section id="lesson-2-beyond-ggplot2-fundamentals" class="level1">
+<h1>Lesson 2: Beyond ggplot2 Fundamentals</h1>
 <section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
-<p>Before we get started, it is important for us to ensure that the required R packages have been installed. If yes, we will load the R packages. If they have yet to be installed, we will install the R packages and load them onto R environment.</p>
+<h2 class="anchored" data-anchor-id="getting-started">1.0 Getting Started</h2>
+<p>In this chapter, several ggplot2 extensions will be introduced to create more elegant and effective statistical graphics.</p>
+<p>In this exercise, beside tidyverse, four R packages will be used. They are: - ggrepel: an R package provides geoms for ggplot2 to repel overlapping text labels. - ggthemes: an R package provides some extra themes, geoms, and scales for ‘ggplot2’. - hrbrthemes: an R package provides typography-centric themes and theme components for ggplot2. - patchwork: an R package for preparing composite figure created using ggplot2.</p>
+<p>Code chunk below will be used to check if these packages have been installed and also will load them onto your working R environment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggrepel, patchwork, ggthemes, tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>hrbrtheme will not be loaded because it is not available. Will use ggplot2 to replace it. Link: https://cran.r-project.org/web/packages/hrbrthemes/index.html</p>
 </section>
 </section>
 <section id="the-data" class="level1">
-<h1>The Data</h1>
+<h1>2.0 The Data</h1>
 <p>Loading the data to the R environment by using read_csv() function of readr package</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"chap01/data/Exam_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>exam_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"chap02/data/Exam_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The data in the file includes (1)Year end examination grades of a cohort of primary 3 students from a local school. (2) There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type. The categorical attributes are: ID, CLASS, GENDER and RACE. The continuous attributes are: MATHS, ENGLISH and SCIENCE.</p>
 </section>
-<section id="first-visualization---math-result" class="level1">
-<h1>First Visualization - Math result</h1>
-<section id="math-result-by-dot-plot" class="level2">
-<h2 class="anchored" data-anchor-id="math-result-by-dot-plot">Math result by Dot Plot</h2>
+<section id="visualization" class="level1">
+<h1>3.0 Visualization</h1>
+<section id="without-ggrepel" class="level2">
+<h2 class="anchored" data-anchor-id="without-ggrepel">3.1 Without GGrepel</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_dotplot</span>(<span class="at">binwidth=</span><span class="fl">2.5</span>, <span class="at">dotsize=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>,<span class="at">breaks=</span><span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>ID), <span class="at">hjust=</span>.<span class="dv">5</span>, <span class="at">vjust=</span><span class="sc">-</span>.<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"English scores versus Maths scores for Primary 3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="math-result-by-histogram" class="level2">
-<h2 class="anchored" data-anchor-id="math-result-by-histogram">Math result by Histogram</h2>
+<section id="with-ggrepel" class="level2">
+<h2 class="anchored" data-anchor-id="with-ggrepel">3.2 With GGrepel</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">fill=</span>GENDER)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>,<span class="at">color=</span><span class="st">"grey30"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label=</span>ID), <span class="at">fontface=</span><span class="st">"bold"</span>) <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"English scores versus Maths scores for Primary 3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="math-result-by-density" class="level2">
-<h2 class="anchored" data-anchor-id="math-result-by-density">Math result by Density</h2>
+<section id="using-ggplot2-theme" class="level2">
+<h2 class="anchored" data-anchor-id="using-ggplot2-theme">3.3 Using GGplot2 theme</h2>
+<p>ggplot2 comes with eight built-in themes, they are: theme_gray(), theme_bw(), theme_classic(), theme_dark(), theme_light(), theme_linedraw(), theme_minimal(), and theme_void().</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">color=</span>GENDER)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">boundary=</span><span class="dv">100</span>, <span class="at">color=</span><span class="st">"grey25"</span>, <span class="at">fill=</span><span class="st">"grey90"</span>) <span class="sc">+</span> <span class="fu">theme_gray</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Distribution of Maths score"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="using-theme_economist" class="level3">
+<h3 class="anchored" data-anchor-id="using-theme_economist">3.3.1 Using theme_economist()</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">boundary=</span><span class="dv">100</span>, <span class="at">color=</span><span class="st">"grey25"</span>, <span class="at">fill=</span><span class="st">"grey90"</span>) <span class="sc">+</span> <span class="fu">theme_gray</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Distribution of Maths score"</span>) <span class="sc">+</span> <span class="fu">theme_economist</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HE02_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="math-result-by-box-plot" class="level2">
-<h2 class="anchored" data-anchor-id="math-result-by-box-plot">Math result by Box Plot</h2>
+<section id="using-theme_minimal-from-ggplot2-replaced-it-with-theme_ipsum-because-this-is-not-available-in-the-current-r-version" class="level3">
+<h3 class="anchored" data-anchor-id="using-theme_minimal-from-ggplot2-replaced-it-with-theme_ipsum-because-this-is-not-available-in-the-current-r-version">3.3.2 Using theme_minimal() from ggplot2 (replaced it with theme_ipsum() because this is not available in the current R version)</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">y=</span>MATHS, <span class="at">x=</span>GENDER)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">stat_summary</span>(<span class="at">geom=</span><span class="st">"point"</span>, <span class="at">fun=</span><span class="st">"mean"</span>,<span class="at">color=</span><span class="st">"red"</span>,<span class="at">size=</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">boundary=</span><span class="dv">100</span>, <span class="at">color=</span><span class="st">"grey25"</span>, <span class="at">fill=</span><span class="st">"grey90"</span>) <span class="sc">+</span> <span class="fu">theme_gray</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Distribution of Maths score"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">15</span>, <span class="at">base_family=</span><span class="st">"Arial"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">18</span>), <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">y=</span>MATHS, <span class="at">x=</span>GENDER)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">position=</span><span class="st">"jitter"</span>,<span class="at">size=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="math-result-by-violin-plot" class="level2">
-<h2 class="anchored" data-anchor-id="math-result-by-violin-plot">Math result by Violin Plot</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">y=</span>MATHS, <span class="at">x=</span>GENDER)) <span class="sc">+</span> <span class="fu">geom_violin</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="math-result-by-trellis-plot" class="level2">
-<h2 class="anchored" data-anchor-id="math-result-by-trellis-plot">Math result by Trellis Plot</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> CLASS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>) <span class="sc">+</span> <span class="fu">facet_grid</span>(<span class="sc">~</span> CLASS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="second-visualization---by-race" class="level1">
-<h1>Second Visualization - By Race</h1>
-<section id="race-by-vertical-bar-chart" class="level2">
-<h2 class="anchored" data-anchor-id="race-by-vertical-bar-chart">Race by Vertical Bar Chart</h2>
+<section id="using-composite-graph" class="level2">
+<h2 class="anchored" data-anchor-id="using-composite-graph">3.4 Using Composite graph</h2>
+<section id="st-statistical-graph---distribution-of-maths-score" class="level3">
+<h3 class="anchored" data-anchor-id="st-statistical-graph---distribution-of-maths-score">3.4.1 1st Statistical Graph - Distribution of Maths score</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>RACE)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>,<span class="at">boundary=</span><span class="dv">100</span>, <span class="at">color=</span><span class="st">"grey25"</span>, <span class="at">fill=</span><span class="st">"grey90"</span>) <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Distribution of Maths scores"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="race-by-horizontal-bar-chart" class="level2">
-<h2 class="anchored" data-anchor-id="race-by-horizontal-bar-chart">Race by Horizontal Bar Chart</h2>
+<section id="nd-statistical-graph---distribution-of-english-score" class="level3">
+<h3 class="anchored" data-anchor-id="nd-statistical-graph---distribution-of-english-score">3.4.2 2nd Statistical Graph - Distribution of English score</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>RACE)) <span class="sc">+</span> <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span><span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>ENGLISH)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">20</span>, <span class="at">boundary=</span><span class="dv">100</span>, <span class="at">color=</span><span class="st">"grey25"</span>, <span class="at">fill=</span><span class="st">"grey90"</span>) <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Distribution of English scores"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="combine-1st-and-2nd-graph---scatterplot-for-english-vs-maths-score" class="level3">
+<h3 class="anchored" data-anchor-id="combine-1st-and-2nd-graph---scatterplot-for-english-vs-maths-score">3.4.3 Combine 1st and 2nd graph - Scatterplot for English vs Maths score</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>)) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"English scores versus Maths scores for Primary 3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HE02_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="creating-scatterplot-with-insert" class="level4">
+<h4 class="anchored" data-anchor-id="creating-scatterplot-with-insert">3.4.3.1 Creating scatterplot with insert</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>insert_element <span class="ot">&lt;-</span> patchwork<span class="sc">::</span>inset_element</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p3 <span class="sc">+</span> <span class="fu">insert_element</span>(p2, <span class="at">left=</span><span class="fl">0.02</span>, <span class="at">bottom=</span><span class="fl">0.7</span>, <span class="at">right=</span><span class="fl">0.5</span>, <span class="at">top=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HE02_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="third-visualization---math-and-english-grades" class="level1">
-<h1>Third Visualization - Math and English Grades</h1>
+<section id="combine-2-ggplot2-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="combine-2-ggplot2-graphs">3.4.4 Combine 2 ggplot2 graphs</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm,<span class="at">linewidth=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="fixing-both-math-and-english-grades-from-0-to-100" class="level2">
-<h2 class="anchored" data-anchor-id="fixing-both-math-and-english-grades-from-0-to-100">Fixing both Math and English grades from 0 to 100</h2>
+</section>
+<section id="combine-3-or-more-ggplot2-graphs" class="level3">
+<h3 class="anchored" data-anchor-id="combine-3-or-more-ggplot2-graphs">3.4.5 Combine 3 or more ggplot2 graphs</h3>
+<p>We can plot more complex composite by using appropriate operators. For example, the composite figure below is plotted by using:</p>
+<p>“/” operator to stack two ggplot2 graphs, “|” operator to place the plots beside each other, “()” operator the define the sequence of the plotting.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>exam_data, <span class="fu">aes</span>(<span class="at">x=</span>MATHS, <span class="at">y=</span>ENGLISH)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span>lm,<span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">coord_cartesian</span>(<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">/</span>p2 <span class="sc">|</span> p3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HE01_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="HE02_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-composite-figure-by-using-patchwork-and-ggtheme" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-composite-figure-by-using-patchwork-and-ggtheme">3.4.6 Creating a composite figure by using patchwork and ggtheme</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>patchwork <span class="ot">&lt;-</span> (p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>patchwork <span class="sc">&amp;</span> <span class="fu">theme_economist</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HE02_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 </section>
 
