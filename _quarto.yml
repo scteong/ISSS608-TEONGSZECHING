@@ -13,6 +13,9 @@ website:
             href: "HE01.html"
           - text: "Hands-on Exercise 2"
             href: "HE02.html"
+          - text: "Hands-on Exercise 3"
+            href: "HE03.html"
+
     right:
       - href: index.qmd
         text: Home
