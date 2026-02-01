@@ -201,5 +201,152 @@
     "title": "Hands-on Exercise 3",
     "section": "4.0 Animated Data Visualisation: plotly",
     "text": "4.0 Animated Data Visualisation: plotly\n\ngg &lt;- ggplot(globalPop, \n       aes(x = Old, \n           y = Young, \n           size = Population, \n           colour = Country)) +\n  geom_point(aes(size = Population,\n                 frame = Year),\n             alpha = 0.7, \n             show.legend = FALSE) + scale_color_manual(values=country_colors) +\n  scale_size(range = c(2, 12)) +\n  labs(x = '% Aged', \n       y = '% Young')\n\nggplotly(gg)     \n\n\n\n\n\n\ngg &lt;- ggplot(globalPop, aes(x = Old, y = Young, size = Population,  colour = Country)) + geom_point(aes(size = Population, frame = Year), alpha = 0.7) + scale_colour_manual(values = country_colors) + scale_size(range = c(2, 12)) + labs(x = '% Aged', y = '% Young') + theme(legend.position='none') \n\nggplotly(gg)    \n\n\n\n\n\n\n4.1 Building an animated bubble plot: plot_ly() method\n\nbp &lt;- globalPop %&gt;% plot_ly(x = ~Old, y = ~Young, size = ~Population, color = ~Continent, sizes = c(2, 100), frame = ~Year, text = ~Country, hoverinfo = \"text\", type = 'scatter', mode = 'markers') %&gt;% layout(showlegend = FALSE) \n\nbp"
+  },
+  {
+    "objectID": "HE04.html",
+    "href": "HE04.html",
+    "title": "Hands-on Exercise 4",
+    "section": "",
+    "text": "Install and launch the following R packages\n\npacman::p_load(ggdist, ggridges, ggthemes, colorspace, tidyverse)\n\n\n\n\nLoading the data to the R environment by using read_csv() function of readr package\n\nexam &lt;- read_csv(\"chap04/data/Exam_data.csv\")\n\nThe data in the file includes (1)Year end examination grades of a cohort of primary 3 students from a local school. (2) There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type. The categorical attributes are: ID, CLASS, GENDER and RACE. The continuous attributes are: MATHS, ENGLISH and SCIENCE.\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS)) + geom_density_ridges(scale=3, rel_min_height = 0.01, bandwidth = 3.4, fill = lighten(\"#7097BB\", .3), color = \"white\") + scale_x_continuous(name = \"English grades\", expand = c(0, 0)) +  scale_y_discrete(name = NULL, expand = expansion(add = c(0.2, 2.6))) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = stat(x))) + geom_density_ridges_gradient(scale=3, rel_min_height = 0.01) + scale_fill_viridis_c(name=\"Temp. [F]\", option=\"C\") + scale_x_continuous(name = \"English grades\", expand = c(0, 0)) +  scale_y_discrete(name = NULL, expand = expansion(add = c(0.2, 2.6))) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = 0.5 - abs(0.5-stat(ecdf)))) + stat_density_ridges(geom = \"density_ridges_gradient\", calc_ecdf = TRUE) + scale_fill_viridis_c(name = \"Tail probability\", direction = -1) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = factor(stat(quantile)))) + stat_density_ridges(geom = \"density_ridges_gradient\", calc_ecdf = TRUE, quantiles = 4, quantile_lines = TRUE)  + scale_fill_viridis_d(name = \"Quartiles\") + theme_ridges()\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = factor(stat(quantile)))) + stat_density_ridges(geom = \"density_ridges_gradient\", calc_ecdf = TRUE, quantiles = c(0.025, 0.975))  + scale_fill_manual(name = \"Probability\", values = c(\"#FF0000A0\", \"#A0A0A0A0\", \"#0000FFA0\"), labels = c(\"(0, 0.025]\", \"(0.025, 0.975]\", \"(0.975, 1]\")) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA)\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA) + geom_boxplot(width = .20, outlier.shape = NA)\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA) + geom_boxplot(width = .20, outlier.shape = NA) + stat_dots(side = \"left\", justification = 1.2, binwidth = .5, dotsize = 2)\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA) + geom_boxplot(width = .20, outlier.shape = NA) + stat_dots(side = \"left\", justification = 1.2, binwidth = .5, dotsize = 1.5)+  coord_flip() +  theme_economist()"
+  },
+  {
+    "objectID": "HE04.html#getting-started",
+    "href": "HE04.html#getting-started",
+    "title": "Hands-on Exercise 4",
+    "section": "",
+    "text": "Install and launch the following R packages\n\npacman::p_load(ggdist, ggridges, ggthemes, colorspace, tidyverse)"
+  },
+  {
+    "objectID": "HE04.html#data",
+    "href": "HE04.html#data",
+    "title": "Hands-on Exercise 4",
+    "section": "",
+    "text": "Loading the data to the R environment by using read_csv() function of readr package\n\nexam &lt;- read_csv(\"chap04/data/Exam_data.csv\")\n\nThe data in the file includes (1)Year end examination grades of a cohort of primary 3 students from a local school. (2) There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type. The categorical attributes are: ID, CLASS, GENDER and RACE. The continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "HE04.html#visualising-distribution-with-ridgeline-plot",
+    "href": "HE04.html#visualising-distribution-with-ridgeline-plot",
+    "title": "Hands-on Exercise 4",
+    "section": "",
+    "text": "ggplot(exam, aes(x = ENGLISH, y = CLASS)) + geom_density_ridges(scale=3, rel_min_height = 0.01, bandwidth = 3.4, fill = lighten(\"#7097BB\", .3), color = \"white\") + scale_x_continuous(name = \"English grades\", expand = c(0, 0)) +  scale_y_discrete(name = NULL, expand = expansion(add = c(0.2, 2.6))) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = stat(x))) + geom_density_ridges_gradient(scale=3, rel_min_height = 0.01) + scale_fill_viridis_c(name=\"Temp. [F]\", option=\"C\") + scale_x_continuous(name = \"English grades\", expand = c(0, 0)) +  scale_y_discrete(name = NULL, expand = expansion(add = c(0.2, 2.6))) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = 0.5 - abs(0.5-stat(ecdf)))) + stat_density_ridges(geom = \"density_ridges_gradient\", calc_ecdf = TRUE) + scale_fill_viridis_c(name = \"Tail probability\", direction = -1) + theme_ridges()\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = factor(stat(quantile)))) + stat_density_ridges(geom = \"density_ridges_gradient\", calc_ecdf = TRUE, quantiles = 4, quantile_lines = TRUE)  + scale_fill_viridis_d(name = \"Quartiles\") + theme_ridges()\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = ENGLISH, y = CLASS, fill = factor(stat(quantile)))) + stat_density_ridges(geom = \"density_ridges_gradient\", calc_ecdf = TRUE, quantiles = c(0.025, 0.975))  + scale_fill_manual(name = \"Probability\", values = c(\"#FF0000A0\", \"#A0A0A0A0\", \"#0000FFA0\"), labels = c(\"(0, 0.025]\", \"(0.025, 0.975]\", \"(0.975, 1]\")) + theme_ridges()"
+  },
+  {
+    "objectID": "HE04.html#visualising-distribution-with-raincloud-plot",
+    "href": "HE04.html#visualising-distribution-with-raincloud-plot",
+    "title": "Hands-on Exercise 4",
+    "section": "",
+    "text": "ggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA)\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA) + geom_boxplot(width = .20, outlier.shape = NA)\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA) + geom_boxplot(width = .20, outlier.shape = NA) + stat_dots(side = \"left\", justification = 1.2, binwidth = .5, dotsize = 2)\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(exam, aes(x = RACE, y = ENGLISH)) + stat_halfeye(adjust = 0.5, justification = -0.2, .width = 0, point_colour = NA) + geom_boxplot(width = .20, outlier.shape = NA) + stat_dots(side = \"left\", justification = 1.2, binwidth = .5, dotsize = 1.5)+  coord_flip() +  theme_economist()"
+  },
+  {
+    "objectID": "HE04.html#getting-started-1",
+    "href": "HE04.html#getting-started-1",
+    "title": "Hands-on Exercise 4",
+    "section": "1.0 Getting Started",
+    "text": "1.0 Getting Started\nInstall and launch the following R packages\n\npacman::p_load(ggstatsplot, tidyverse)"
+  },
+  {
+    "objectID": "HE04.html#data-1",
+    "href": "HE04.html#data-1",
+    "title": "Hands-on Exercise 4",
+    "section": "2.0 Data",
+    "text": "2.0 Data\nLoading the data to the R environment by using read_csv() function of readr package\n\nexam &lt;- read_csv(\"chap04/data/Exam_data.csv\")\n\nThe data in the file includes (1)Year end examination grades of a cohort of primary 3 students from a local school. (2) There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type. The categorical attributes are: ID, CLASS, GENDER and RACE. The continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "HE04.html#one-sample-test-gghistostats-method",
+    "href": "HE04.html#one-sample-test-gghistostats-method",
+    "title": "Hands-on Exercise 4",
+    "section": "3.0 One-sample test: gghistostats() method",
+    "text": "3.0 One-sample test: gghistostats() method\n\nset.seed(1234)\n\ngghistostats( data = exam, x = ENGLISH, type = \"bayes\", test.value = 60, xlab = \"English scores\")"
+  },
+  {
+    "objectID": "HE04.html#two-sample-mean-test-ggbetweenstats",
+    "href": "HE04.html#two-sample-mean-test-ggbetweenstats",
+    "title": "Hands-on Exercise 4",
+    "section": "3.1 Two-sample mean test: ggbetweenstats()",
+    "text": "3.1 Two-sample mean test: ggbetweenstats()\n\nggbetweenstats(data = exam, x = GENDER, y = MATHS, type = \"np\", messages = FALSE)"
+  },
+  {
+    "objectID": "HE04.html#oneway-anova-test-ggbetweenstats-method",
+    "href": "HE04.html#oneway-anova-test-ggbetweenstats-method",
+    "title": "Hands-on Exercise 4",
+    "section": "3.2 Oneway ANOVA Test: ggbetweenstats() method",
+    "text": "3.2 Oneway ANOVA Test: ggbetweenstats() method\n\nggbetweenstats(data = exam, x = RACE, y = ENGLISH, type = \"p\", mean.ci = TRUE, pairwise.comparisons = TRUE, pairwise.display = \"s\", p.adjust.method = \"fdr\", messages = FALSE)"
+  },
+  {
+    "objectID": "HE04.html#significant-test-of-correlation-ggscatterstats",
+    "href": "HE04.html#significant-test-of-correlation-ggscatterstats",
+    "title": "Hands-on Exercise 4",
+    "section": "3.3 Significant Test of Correlation: ggscatterstats()",
+    "text": "3.3 Significant Test of Correlation: ggscatterstats()\n\nggscatterstats(data = exam, x = MATHS, y = ENGLISH, marginal = FALSE, )"
+  },
+  {
+    "objectID": "HE04.html#significant-test-of-association-depedence-ggbarstats-methods",
+    "href": "HE04.html#significant-test-of-association-depedence-ggbarstats-methods",
+    "title": "Hands-on Exercise 4",
+    "section": "3.4 Significant Test of Association (Depedence) : ggbarstats() methods",
+    "text": "3.4 Significant Test of Association (Depedence) : ggbarstats() methods\n\nexam1 &lt;- exam %&gt;% mutate(MATHS_bins = cut(MATHS, breaks = c(0,60,75,85,100)))\n\n\nggbarstats(exam1,x = MATHS_bins, y = GENDER)"
+  },
+  {
+    "objectID": "HE04.html#getting-started-2",
+    "href": "HE04.html#getting-started-2",
+    "title": "Hands-on Exercise 4",
+    "section": "1.0 Getting Started",
+    "text": "1.0 Getting Started\nInstall and launch the following R packages\n\npacman::p_load(plotly, crosstalk, DT, ggdist, ggridges, colorspace,\ngganimate, tidyverse)"
+  },
+  {
+    "objectID": "HE04.html#data-2",
+    "href": "HE04.html#data-2",
+    "title": "Hands-on Exercise 4",
+    "section": "2.0 Data",
+    "text": "2.0 Data\nLoading the data to the R environment by using read_csv() function of readr package\n\nexam &lt;- read_csv(\"chap04/data/Exam_data.csv\")\n\nThe data in the file includes (1)Year end examination grades of a cohort of primary 3 students from a local school. (2) There are a total of seven attributes. Four of them are categorical data type and the other three are in continuous data type. The categorical attributes are: ID, CLASS, GENDER and RACE. The continuous attributes are: MATHS, ENGLISH and SCIENCE."
+  },
+  {
+    "objectID": "HE04.html#visualizing-the-uncertainty-of-point-estimates-ggplot2-methods",
+    "href": "HE04.html#visualizing-the-uncertainty-of-point-estimates-ggplot2-methods",
+    "title": "Hands-on Exercise 4",
+    "section": "3.0 Visualizing the uncertainty of point estimates: ggplot2 methods",
+    "text": "3.0 Visualizing the uncertainty of point estimates: ggplot2 methods\n\nmy_sum &lt;- exam %&gt;% group_by(RACE) %&gt;% summarise(n=n(), mean=mean(MATHS), sd=sd(MATHS)) %&gt;% mutate(se=sd/sqrt(n-1))\n\n\nknitr::kable(head(my_sum), format = 'html')\n\n\n\n\nRACE\nn\nmean\nsd\nse\n\n\n\n\nChinese\n193\n76.50777\n15.69040\n1.132357\n\n\nIndian\n12\n60.66667\n23.35237\n7.041005\n\n\nMalay\n108\n57.44444\n21.13478\n2.043177\n\n\nOthers\n9\n69.66667\n10.72381\n3.791438\n\n\n\n\n\n\n3.1 Plotting standard error bars of point estimates\n\nggplot(my_sum) + geom_errorbar(aes(x=RACE, ymin=mean-se, ymax=mean+se), width=0.2, colour=\"black\", alpha=0.9, linewidth=0.5) + geom_point(aes(x=RACE, y=mean), stat=\"identity\", color=\"red\", size = 1.5, alpha=1) + ggtitle(\"Standard error of mean maths score by rac\")\n\n\n\n\n\n\n\n\n\n\n3.2 Plotting confidence interval of point estimates\n\nggplot(my_sum) + geom_errorbar(aes(x=reorder(RACE, -mean),    ymin=mean-1.96*se, ymax=mean+1.96*se), width=0.2, colour=\"black\", alpha=0.9, linewidth=0.5) + geom_point(aes(x=RACE, y=mean),  stat=\"identity\", color=\"red\", size = 1.5, alpha=1) + labs(x = \"Maths score\", title = \"95% confidence interval of mean maths score by race\")\n\n\n\n\n\n\n\n\n\n\n3.3 Visualizing the uncertainty of point estimates with interactive error bars\n\nshared_df = SharedData$new(my_sum)\n\nbscols(widths = c(4,8), ggplotly((ggplot(shared_df) + geom_errorbar(aes(x=reorder(RACE, -mean), ymin=mean-2.58*se, ymax=mean+2.58*se), width=0.2, colour=\"black\", alpha=0.9, size=0.5) + geom_point(aes(x=RACE, y=mean, text = paste(\"Race:\", `RACE`, \"&lt;br&gt;N:\", `n`, \"&lt;br&gt;Avg. Scores:\", round(mean, digits = 2), \"&lt;br&gt;95% CI:[\", round((mean-2.58*se), digits = 2), \",\", round((mean+2.58*se), digits = 2),\"]\")), stat=\"identity\", color=\"red\", size = 1.5, alpha=1) + xlab(\"Race\") + ylab(\"Average Scores\") + theme_minimal() + theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1)) + ggtitle(\"99% CI avg /&lt;br&gt;maths scores\")), tooltip = \"text\"), DT::datatable(shared_df, rownames = FALSE, class=\"compact\", width=\"100%\", options = list(pageLength = 10, scrollX=T), colnames = c(\"No. of pupils\", \"Avg Scores\", \"Std Dev\", \"Std Error\")) %&gt;% formatRound(columns=c('mean', 'sd', 'se'), digits=2))"
+  },
+  {
+    "objectID": "HE04.html#visualising-uncertainty-ggdist-package",
+    "href": "HE04.html#visualising-uncertainty-ggdist-package",
+    "title": "Hands-on Exercise 4",
+    "section": "4.0 Visualising Uncertainty: ggdist package",
+    "text": "4.0 Visualising Uncertainty: ggdist package\n\n4.1 Visualizing the uncertainty of point estimates: ggdist methods\n\nexam %&gt;% ggplot(aes(x = RACE, y = MATHS)) + stat_pointinterval() +\nlabs(title = \"Visualising confidence intervals of mean math score\",\nsubtitle = \"Mean Point + Multiple-interval plot\")\n\n\n\n\n\n\n\n\n\nexam %&gt;% ggplot(aes(x = RACE, y = MATHS)) + stat_pointinterval(.width = 0.95, .point = median, .interval = qi) + labs(title = \"Visualising confidence intervals of mean math score\", subtitle = \"Mean Point + Multiple-interval plot\")\n\n\n\n\n\n\n\n\n\nexam %&gt;% ggplot(aes(x = RACE, y = MATHS)) + stat_pointinterval(show.legend = FALSE) + labs(title = \"Visualising confidence intervals of mean math score\", subtitle = \"Mean Point + Multiple-interval plot\")\n\n\n\n\n\n\n\n\n\nexam %&gt;% ggplot(aes(x = RACE, y = MATHS)) + stat_gradientinterval(fill = \"skyblue\", show.legend = FALSE) + labs(title = \"Visualising confidence intervals of mean math score\", subtitle = \"Gradient + interval plot\")"
+  },
+  {
+    "objectID": "HE04.html#visualising-uncertainty-with-hypothetical-outcome-plots-hops",
+    "href": "HE04.html#visualising-uncertainty-with-hypothetical-outcome-plots-hops",
+    "title": "Hands-on Exercise 4",
+    "section": "5.0 Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)",
+    "text": "5.0 Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)\n\n5.1 Installing ungeviz package\n\ndevtools::install_github(\"wilkelab/ungeviz\")\n\n\n\n5.2 Launch the application in R\n\nlibrary(ungeviz)\n\n\n\n5.3 Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)\n\nggplot(data = exam, (aes(x = factor(RACE), y = MATHS))) +  geom_point(position = position_jitter(height = 0.3, width = 0.05), \nsize = 0.4, color = \"#0072B2\",  alpha = 1/2) + geom_hpline(data = sampler(25, group = RACE), height = 0.6, color = \"#D55E00\") + theme_bw() + transition_states(.draw, 1, 3)"
+  },
+  {
+    "objectID": "HE04.html#getting-started-3",
+    "href": "HE04.html#getting-started-3",
+    "title": "Hands-on Exercise 4",
+    "section": "1.0 Getting Started",
+    "text": "1.0 Getting Started\nInstall and launch the following R packages\n\npacman::p_load(tidyverse, FunnelPlotR, plotly, knitr)\n\npackage 'FunnelPlotR' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\SC\\AppData\\Local\\Temp\\RtmpANAUMQ\\downloaded_packages"
+  },
+  {
+    "objectID": "HE04.html#data-3",
+    "href": "HE04.html#data-3",
+    "title": "Hands-on Exercise 4",
+    "section": "2.0 Data",
+    "text": "2.0 Data\nLoading the data to the R environment by using read_csv() function of readr package\n\ncovid19 &lt;- read_csv(\"chap04/data/COVID-19_DKI_Jakarta.csv\") %&gt;% mutate_if(is.character, as.factor)"
+  },
+  {
+    "objectID": "HE04.html#funnelplotr-methods",
+    "href": "HE04.html#funnelplotr-methods",
+    "title": "Hands-on Exercise 4",
+    "section": "3.0 FunnelPlotR methods",
+    "text": "3.0 FunnelPlotR methods\n\n3.1 FunnelPlotR methods: The basic plot\n\nfunnel_plot(.data = covid19, numerator = Positive, denominator = Death, group = `Sub-district`)\n\n\n\n\n\n\n\n\nA funnel plot object with 267 points of which 0 are outliers. \nPlot is adjusted for overdispersion. \n\n\n\n\n3.2 FunnelPlotR methods: Makeover 1\n\nfunnel_plot(.data = covid19, numerator = Death, denominator = Positive, group = `Sub-district`, data_type = \"PR\", #&lt;&lt; \nxrange = c(0, 6500),  #&lt;&lt;\nyrange = c(0, 0.05)   #&lt;&lt;\n)\n\n\n\n\n\n\n\n\nA funnel plot object with 267 points of which 7 are outliers. \nPlot is adjusted for overdispersion. \n\n\n\n\n3.3 FunnelPlotR methods: Makeover 2\n\nfunnel_plot(.data = covid19, numerator = Death, denominator = Positive, group = `Sub-district`, data_type = \"PR\", xrange = c(0, 6500), yrange = c(0, 0.05), label = NA, title = \"Cumulative COVID-19 Fatality Rate by Cumulative Total Number of COVID-19 Positive Cases\", #&lt;&lt;           \nx_label = \"Cumulative COVID-19 Positive Cases\", #&lt;&lt;\ny_label = \"Cumulative Fatality Rate\"  #&lt;&lt;\n)\n\n\n\n\n\n\n\n\nA funnel plot object with 267 points of which 7 are outliers. \nPlot is adjusted for overdispersion."
+  },
+  {
+    "objectID": "HE04.html#funnel-plot-for-fair-visual-comparison-ggplot2-methods",
+    "href": "HE04.html#funnel-plot-for-fair-visual-comparison-ggplot2-methods",
+    "title": "Hands-on Exercise 4",
+    "section": "4.0 Funnel Plot for Fair Visual Comparison: ggplot2 methods",
+    "text": "4.0 Funnel Plot for Fair Visual Comparison: ggplot2 methods\n\n4.1 Computing the basic derived fields\n\ndf &lt;- covid19 %&gt;% mutate(rate = Death / Positive) %&gt;% mutate(rate.se = sqrt((rate*(1-rate)) / (Positive))) %&gt;% filter(rate &gt; 0)\n\n\nfit.mean &lt;- weighted.mean(df$rate, 1/df$rate.se^2)\n\n\n\n4.2 Calculate lower and upper limits for 95% and 99.9% CI\n\nnumber.seq &lt;- seq(1, max(df$Positive), 1)\nnumber.ll95 &lt;- fit.mean - 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) \nnumber.ul95 &lt;- fit.mean + 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) \nnumber.ll999 &lt;- fit.mean - 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) \nnumber.ul999 &lt;- fit.mean + 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) \ndfCI &lt;- data.frame(number.ll95, number.ul95, number.ll999, \n                   number.ul999, number.seq, fit.mean)\n\n\n\n4.3 Plotting a static funnel plot\n\np &lt;- ggplot(df, aes(x = Positive, y = rate)) + geom_point(aes(label=`Sub-district`), alpha=0.4) + geom_line(data = dfCI, aes(x = number.seq, y = number.ll95), size = 0.4, colour = \"grey40\", linetype = \"dashed\") + geom_line(data = dfCI, aes(x = number.seq, y = number.ul95), size = 0.4, colour = \"grey40\", linetype = \"dashed\") + geom_line(data = dfCI,  aes(x = number.seq, \ny = number.ll999), size = 0.4, colour = \"grey40\") + geom_line(data = dfCI, aes(x = number.seq, y = number.ul999), size = 0.4, colour = \"grey40\") + geom_hline(data = dfCI, aes(yintercept = fit.mean), size = 0.4, colour = \"grey40\") + coord_cartesian(ylim=c(0,0.05)) +\n annotate(\"text\", x = 1, y = -0.13, label = \"95%\", size = 3, colour = \"grey40\") +  annotate(\"text\", x = 4.5, y = -0.18, label = \"99%\", size = 3, colour = \"grey40\") +  ggtitle(\"Cumulative Fatality Rate by Cumulative Number of COVID-19 Cases\") + xlab(\"Cumulative Number of COVID-19 Cases\") + ylab(\"Cumulative Fatality Rate\") + theme_light() + theme(plot.title = element_text(size=12), legend.position = c(0.91,0.85), legend.title = element_text(size=7), legend.text = element_text(size=7), legend.background = element_rect(colour = \"grey60\", linetype = \"dotted\"), legend.key.height = unit(0.3, \"cm\"))\np\n\n\n\n\n\n\n\n\n\n\n4.4 Interactive Funnel Plot: plotly + ggplot2\n\nfp_ggplotly &lt;- ggplotly(p,tooltip = c(\"label\", \"x\", \"y\"))\nfp_ggplotly"
   }
 ]
