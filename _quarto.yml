@@ -17,10 +17,15 @@ website:
             href: "HE03.html"
           - text: "Hands-on Exercise 4"
             href: "HE04.html"
-    right:
-      - href: index.qmd
-        text: Home
-
+          - text: "Hands-on Exercise 5"
+            href: "HE05.html"
+      - text: "Take-home Exercise" 
+        menu: 
+          - text: "Take-home Exercise 1"
+            href: "TE01.html"
+    right: 
+      - text: "Index"
+        href: "index.html"
 format:
   html:
     theme:

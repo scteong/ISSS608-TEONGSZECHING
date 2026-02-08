@@ -39,16 +39,19 @@ ggplot(exam, aes(x = ENGLISH, y = CLASS)) + geom_density_ridges(scale=3, rel_min
 ```
 
 ### 3.2 Varying fill colors along the x axis
+
 ```{r}
 ggplot(exam, aes(x = ENGLISH, y = CLASS, fill = stat(x))) + geom_density_ridges_gradient(scale=3, rel_min_height = 0.01) + scale_fill_viridis_c(name="Temp. [F]", option="C") + scale_x_continuous(name = "English grades", expand = c(0, 0)) +  scale_y_discrete(name = NULL, expand = expansion(add = c(0.2, 2.6))) + theme_ridges()
 ```
 
 ### 3.3 Mapping the probabilities directly onto colour
+
 ```{r}
 ggplot(exam, aes(x = ENGLISH, y = CLASS, fill = 0.5 - abs(0.5-stat(ecdf)))) + stat_density_ridges(geom = "density_ridges_gradient", calc_ecdf = TRUE) + scale_fill_viridis_c(name = "Tail probability", direction = -1) + theme_ridges()
 ```
 
 ### 3.4 Ridgeline plots with quantile lines
+
 ```{r}
 ggplot(exam, aes(x = ENGLISH, y = CLASS, fill = factor(stat(quantile)))) + stat_density_ridges(geom = "density_ridges_gradient", calc_ecdf = TRUE, quantiles = 4, quantile_lines = TRUE)  + scale_fill_viridis_d(name = "Quartiles") + theme_ridges()
 ```
@@ -171,16 +174,19 @@ knitr::kable(head(my_sum), format = 'html')
 ```
 
 ### 3.1 Plotting standard error bars of point estimates
+
 ```{r}
 ggplot(my_sum) + geom_errorbar(aes(x=RACE, ymin=mean-se, ymax=mean+se), width=0.2, colour="black", alpha=0.9, linewidth=0.5) + geom_point(aes(x=RACE, y=mean), stat="identity", color="red", size = 1.5, alpha=1) + ggtitle("Standard error of mean maths score by rac")
 ```
 
 ### 3.2 Plotting confidence interval of point estimates
+
 ```{r}
 ggplot(my_sum) + geom_errorbar(aes(x=reorder(RACE, -mean),    ymin=mean-1.96*se, ymax=mean+1.96*se), width=0.2, colour="black", alpha=0.9, linewidth=0.5) + geom_point(aes(x=RACE, y=mean),  stat="identity", color="red", size = 1.5, alpha=1) + labs(x = "Maths score", title = "95% confidence interval of mean maths score by race")
 ```
 
 ### 3.3 Visualizing the uncertainty of point estimates with interactive error bars
+
 ```{r}
 shared_df = SharedData$new(my_sum)
 
@@ -190,6 +196,7 @@ bscols(widths = c(4,8), ggplotly((ggplot(shared_df) + geom_errorbar(aes(x=reorde
 ## 4.0 Visualising Uncertainty: ggdist package
 
 ### 4.1 Visualizing the uncertainty of point estimates: ggdist methods
+
 ```{r}
 exam %>% ggplot(aes(x = RACE, y = MATHS)) + stat_pointinterval() +
 labs(title = "Visualising confidence intervals of mean math score",
@@ -211,16 +218,19 @@ exam %>% ggplot(aes(x = RACE, y = MATHS)) + stat_gradientinterval(fill = "skyblu
 ## 5.0 Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)
 
 ### 5.1 Installing ungeviz package
+
 ```{r}
 devtools::install_github("wilkelab/ungeviz")
 ```
 
 ### 5.2 Launch the application in R
+
 ```{r}
 library(ungeviz)
 ```
 
 ### 5.3 Visualising Uncertainty with Hypothetical Outcome Plots (HOPs)
+
 ```{r}
 ggplot(data = exam, (aes(x = factor(RACE), y = MATHS))) +  geom_point(position = position_jitter(height = 0.3, width = 0.05), 
 size = 0.4, color = "#0072B2",  alpha = 1/2) + geom_hpline(data = sampler(25, group = RACE), height = 0.6, color = "#D55E00") + theme_bw() + transition_states(.draw, 1, 3)
@@ -271,6 +281,7 @@ y_label = "Cumulative Fatality Rate"  #<<
 ```
 
 ## 4.0 Funnel Plot for Fair Visual Comparison: ggplot2 methods
+
 ### 4.1 Computing the basic derived fields
 
 ```{r}
