@@ -9,7 +9,7 @@ execute:
   warning: false
   freeze: true
 ---
-# WIP
+
 
 # Factors impacting the learning outcomes of students at University of Education (Vietnam)
 
