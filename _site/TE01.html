@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 8, 2026</p>
+      <p class="date-modified">February 13, 2026</p>
     </div>
   </div>
     
@@ -289,12 +289,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="code" class="level3">
-<h3 class="anchored" data-anchor-id="code">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">count</span>(df, GPA), <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)), <span class="fu">aes</span>(GPA, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Overall GPA distribution"</span>,<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Share of students"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="visual" class="level3">
-<h3 class="anchored" data-anchor-id="visual">Visual</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -305,11 +303,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Observation:</strong><br>
-Overall, the GPA distribution is concentrated in the mid-performance range. Most students fall within the 2.5–&lt;3.2 and 3.2–&lt;3.6 categories, while only small proportions appear at the lowest and highest ends. This indicates that the cohort largely consists of average-to-good performers rather than extreme achievers, suggesting a relatively homogeneous distribution of academic outcomes.</p>
-</section>
+Overall, the GPA distribution is concentrated in the mid-performance range. Most students fall within the 2.5 to &lt;3.2 and 3.2 to &lt;3.6 categories, while only small proportions appear at the lowest and highest ends. This indicates that the cohort largely consists of average-to-good performers rather than extreme achievers, suggesting a relatively homogeneous distribution of academic outcomes.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>total_students <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">count</span>(df, GPA), <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(GPA, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">"Overall GPA distribution (N = "</span>, total_students, <span class="st">")"</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"% of students"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"GPA"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<hr>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -320,12 +335,10 @@ Overall, the GPA distribution is concentrated in the mid-performance range. Most
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="code-1" class="level3">
-<h3 class="anchored" data-anchor-id="code-1">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">group_by</span>(<span class="fu">count</span>(df, Year, GPA), Year), <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)), <span class="fu">aes</span>(Year, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA composition by year of study"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Share within year"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="visual-1" class="level3">
-<h3 class="anchored" data-anchor-id="visual-1">Visual</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -336,11 +349,15 @@ Overall, the GPA distribution is concentrated in the mid-performance range. Most
 </div>
 </div>
 <p><strong>Observation:</strong><br>
-Performance patterns vary slightly across academic years. Senior students and graduates generally exhibit a higher proportion of good and excellent GPAs compared with earlier-year students. This may reflect accumulated experience, improved study strategies, and better adaptation to university expectations over time. In contrast, newer students show more mid-range outcomes, possibly due to transitional challenges. The results suggest that academic achievement may improve progressively as students become more familiar with the learning environment.</p>
-</section>
+Performance patterns vary slightly across academic years. Senior students and graduates generally exhibit a higher proportion of good and excellent GPAs compared with earlier-year students. This may reflect accumulated experience, improved study strategies and better adaptation to university expectations over time. In contrast, newer students show more mid-range outcomes, possibly due to transitional challenges. The results suggest that academic achievement may improve progressively as students become more familiar with the learning environment.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">group_by</span>(<span class="fu">count</span>(df, Year, GPA), Year), <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)), <span class="fu">aes</span>(Year, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA composition by year of study"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Share within year"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<hr>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -351,13 +368,10 @@ Performance patterns vary slightly across academic years. Senior students and gr
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="code-2" class="level3">
-<h3 class="anchored" data-anchor-id="code-2">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">group_by</span>(<span class="fu">count</span>(df, Year, Time_SocicalMedia, GPA), Year, Time_SocicalMedia),<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)),<span class="fu">aes</span>(Time_SocicalMedia, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Year, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"fixed"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA composition by daily social media use (by Year)"</span>, <span class="at">x =</span> <span class="st">"Social media time per day"</span>, <span class="at">y =</span> <span class="st">"Share within group"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="visual-2" class="level3">
-<h3 class="anchored" data-anchor-id="visual-2">Visual</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -368,11 +382,16 @@ Performance patterns vary slightly across academic years. Senior students and gr
 </div>
 </div>
 <p><strong>Observation:</strong><br>
-Across all academic years, heavier daily social media use is associated with a slightly lower share of strong academic outcomes. Students spending more than three to four hours per day tend to show comparatively fewer high GPAs and relatively more mid-range results. Although the differences are modest rather than dramatic, the pattern is consistent across cohorts.</p>
-</section>
+Across all academic years, heavier daily social media use is associated with a slightly lower share of strong academic outcomes. Students spending more than three to four hours per day tend to show comparatively fewer high GPA and relatively more mid range results. Although the differences are modest rather than dramatic, the pattern is consistent across cohorts.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">group_by</span>(<span class="fu">count</span>(df, Year, Time_SocicalMedia, GPA), Year, Time_SocicalMedia),<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)),<span class="fu">aes</span>(Time_SocicalMedia, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Year, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"fixed"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA composition by daily social media use (by Year)"</span>, <span class="at">x =</span> <span class="st">"Social media time per day"</span>, <span class="at">y =</span> <span class="st">"Share within group"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>), <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<hr>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -383,12 +402,10 @@ Across all academic years, heavier daily social media use is associated with a s
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="code-3" class="level3">
-<h3 class="anchored" data-anchor-id="code-3">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">group_by</span>(<span class="fu">count</span>(df, Year, Time_Studying, GPA),     Year, Time_Studying),<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)),<span class="fu">aes</span>(Time_Studying, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Year, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"fixed"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA composition by daily study time (by Year)"</span>, <span class="at">x =</span> <span class="st">"Study time per day"</span>, <span class="at">y =</span> <span class="st">"Share within group"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>),  <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="visual-3" class="level3">
-<h3 class="anchored" data-anchor-id="visual-3">Visual</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -399,11 +416,15 @@ Across all academic years, heavier daily social media use is associated with a s
 </div>
 </div>
 <p><strong>Observation:</strong><br>
-Across all academic years, students who report longer daily study hours tend to show a higher share of good and excellent GPA outcomes. Groups studying six hours or more generally contain relatively more high-performing students, while shorter study durations display a larger proportion of mid-to-lower GPAs. Although the differences are moderate rather than dramatic, the pattern is consistent across cohorts. Overall, study time appears to be positively associated with academic performance, though other factors may also play a role.</p>
-</section>
+Across all academic years, students who report longer daily study hours tend to show a higher share of better GPA outcomes. Groups studying six hours or more generally contain relatively more high-performing students, while shorter study duration display a larger proportion of mid to lower range of GPA. Although the differences are moderate rather than dramatic, the pattern is consistent across cohorts. Overall, study time appears to be positively associated with academic performance.</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">mutate</span>(<span class="fu">group_by</span>(<span class="fu">count</span>(df, Year, Time_Studying, GPA),     Year, Time_Studying),<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)),<span class="fu">aes</span>(Time_Studying, pct, <span class="at">fill =</span> GPA)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Year, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"fixed"</span>) <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>()) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"GPA composition by daily study time (by Year)"</span>, <span class="at">x =</span> <span class="st">"Study time per day"</span>, <span class="at">y =</span> <span class="st">"Share within group"</span>, <span class="at">fill =</span> <span class="st">"GPA"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>),  <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<hr>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -414,16 +435,10 @@ Across all academic years, students who report longer daily study hours tend to 
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="code-4" class="level3">
-<h3 class="anchored" data-anchor-id="code-4">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p5_uni_support <span class="ot">&lt;-</span> <span class="fu">plot_likert_stack</span>(df, <span class="st">"SupportOf_Uni"</span>, <span class="st">"Perceived university support"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p5_lec_support <span class="ot">&lt;-</span> <span class="fu">plot_likert_stack</span>(df, <span class="st">"SupportOf_Lec"</span>, <span class="st">"Perceived lecturer support"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p5_uni_support <span class="sc">/</span> p5_lec_support</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="visual-4" class="level3">
-<h3 class="anchored" data-anchor-id="visual-4">Visual</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -434,11 +449,19 @@ Across all academic years, students who report longer daily study hours tend to 
 </div>
 </div>
 <p><strong>Observation:</strong><br>
-Perceptions of both university and lecturer support are strongly positive, with most responses concentrated in the “Quite” and “Very” supportive categories. Lecturer support appears marginally stronger than institutional support, indicating that direct interaction with teaching staff may have a greater perceived impact on learning. Negative responses are minimal, suggesting that students generally feel well assisted academically and administratively. Such supportive conditions likely contribute to maintaining stable and satisfactory learning outcomes.</p>
-</section>
+Perceptions of both university and lecturer support are strongly positive, with most responses concentrated in the “Quite” and “Very” supportive categories. Lecturer support appears marginally stronger than university support, indicating that direct interaction with teaching staff may have a greater perceived impact on learning. Negative responses are minimal, suggesting that students generally feel well assisted academically and administratively. Such supportive conditions likely contribute to maintaining stable and satisfactory learning outcomes.</p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p5_uni_support <span class="ot">&lt;-</span> <span class="fu">plot_likert_stack</span>(df, <span class="st">"SupportOf_Uni"</span>, <span class="st">"Perceived university support"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p5_lec_support <span class="ot">&lt;-</span> <span class="fu">plot_likert_stack</span>(df, <span class="st">"SupportOf_Lec"</span>, <span class="st">"Perceived lecturer support"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p5_uni_support <span class="sc">/</span> p5_lec_support</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<hr>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -449,30 +472,10 @@ Perceptions of both university and lecturer support are strongly positive, with 
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<section id="code-5" class="level3">
-<h3 class="anchored" data-anchor-id="code-5">Code</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>likert_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Adapt_Learning_Uni"</span>,<span class="st">"Study_Methods"</span>,<span class="st">"SupportOf_Uni"</span>,<span class="st">"SupportOf_Lec"</span>, <span class="st">"Facilitie_Uni"</span>,<span class="st">"Quality_Lecturer"</span>,<span class="st">"TrainingCurriculum"</span>,<span class="st">"Competitive_Class"</span>,<span class="st">"InfuenceF_Friends"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>nice_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Adaptation"</span>,<span class="st">"Study Methods"</span>,<span class="st">"Uni Support"</span>,<span class="st">"Lecturer Support"</span>,<span class="st">"Facilities"</span>,<span class="st">"Lecturer Quality"</span>,<span class="st">"Curriculum"</span>, <span class="st">"Competition"</span>,<span class="st">"Peer Influence"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">select</span>(df, <span class="fu">all_of</span>(likert_vars))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(df2)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>corr_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(df2, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(corr_mat) <span class="ot">&lt;-</span> nice_labels</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(corr_mat) <span class="ot">&lt;-</span> nice_labels</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>corr_long <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.table</span>(corr_mat))</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>corr_long <span class="ot">&lt;-</span> <span class="fu">rename</span>(corr_long, <span class="at">var1 =</span> Var1, <span class="at">var2 =</span> Var2, <span class="at">rho =</span> Freq)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corr_long, <span class="fu">aes</span>(var1, var2, <span class="at">fill =</span> rho)) <span class="sc">+</span> <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> <span class="fu">coord_equal</span>() <span class="sc">+</span> <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"#d73027"</span>,   <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"#4575b4"</span>, <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Spearman Correlation Among Learning Environment Factors"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"ρ"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>), <span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="visual-5" class="level3">
-<h3 class="anchored" data-anchor-id="visual-5">Visual</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Visual</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Code</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -483,8 +486,31 @@ Perceptions of both university and lecturer support are strongly positive, with 
 </div>
 </div>
 <p><strong>Observation:</strong><br>
-The heatmap shows moderate positive relationships among several learning environment factors. Adaptation, effective study methods, and lecturer quality tend to move together, indicating that these aspects reinforce one another. Students perceiving strong teaching quality also report better adjustment and learning behaviours. However, correlations are not excessively high, suggesting each factor contributes uniquely to outcomes. Overall, academic performance appears to be shaped by multiple interconnected yet distinct elements of the learning experience rather than any single dominant driver.</p>
-</section>
+The heatmap shows moderate positive relationships among several learning environment factors. Adaptation, effective study methods, and lecturer quality tend to move together, indicating that these aspects reinforce one another. Students perceiving strong teaching quality also report better adjustment and learning behaviors. However, correlations are not excessively high, suggesting each factor contributes uniquely to outcomes. Overall, academic performance appears to be shaped by multiple interconnected yet distinct elements of the learning experience rather than any single dominant driver.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>likert_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Adapt_Learning_Uni"</span>,<span class="st">"Study_Methods"</span>,<span class="st">"SupportOf_Uni"</span>,<span class="st">"SupportOf_Lec"</span>, <span class="st">"Facilitie_Uni"</span>,<span class="st">"Quality_Lecturer"</span>,<span class="st">"TrainingCurriculum"</span>,<span class="st">"Competitive_Class"</span>,<span class="st">"InfuenceF_Friends"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>likert_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Adaptation"</span>,<span class="st">"Study Methods"</span>,<span class="st">"Uni Support"</span>,<span class="st">"Lecturer Support"</span>,<span class="st">"Facilities"</span>,<span class="st">"Lecturer Quality"</span>,<span class="st">"Curriculum"</span>, <span class="st">"Competition"</span>,<span class="st">"Peer Influence"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">select</span>(df, <span class="fu">all_of</span>(likert_vars))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">drop_na</span>(df2)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>corr_mat <span class="ot">&lt;-</span> <span class="fu">cor</span>(df2, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(corr_mat) <span class="ot">&lt;-</span> likert_labels</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(corr_mat) <span class="ot">&lt;-</span> likert_labels</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>corr_long <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">as.table</span>(corr_mat))</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>corr_long <span class="ot">&lt;-</span> <span class="fu">rename</span>(corr_long, <span class="at">var1 =</span> Var1, <span class="at">var2 =</span> Var2, <span class="at">rho =</span> Freq)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corr_long, <span class="fu">aes</span>(var1, var2, <span class="at">fill =</span> rho)) <span class="sc">+</span> <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> <span class="fu">coord_equal</span>() <span class="sc">+</span> <span class="fu">scale_fill_gradient2</span>(<span class="at">low =</span> <span class="st">"#d73027"</span>,   <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"#4575b4"</span>, <span class="at">midpoint =</span> <span class="dv">0</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Correlation Among Learning Environment Factors"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="st">"ρ"</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>), <span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

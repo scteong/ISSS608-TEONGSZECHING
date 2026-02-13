@@ -10,7 +10,6 @@ execute:
   freeze: true
 ---
 
-
 # Factors impacting the learning outcomes of students at University of Education (Vietnam)
 
 ## 1.0 Getting Started
@@ -59,106 +58,127 @@ ggplot(df2, aes(x = 1, y = pct, fill = resp)) + geom_col(width = 0.6) + coord_fl
 ::: callout-note
 ## Visualization 1 — GPA distribution {.tabset}
 
-### Code
-
-``` r
-ggplot(mutate(count(df, GPA), pct = n / sum(n)), aes(GPA, pct, fill = GPA)) + geom_col() + coord_flip() + scale_y_continuous(labels = scales::percent_format()) + labs(title = "Overall GPA distribution",x = NULL, y = "Share of students", fill = "GPA") + theme_minimal()
-```
-
+::: panel-tabset
 ### Visual
 
 ```{r, echo=FALSE}
 
-ggplot(mutate(count(df, GPA), pct = n / sum(n)), aes(GPA, pct, fill = GPA)) + geom_col() + coord_flip() + scale_y_continuous(labels = scales::percent_format()) + labs(title = "Overall GPA distribution",x = NULL, y = "Share of students", fill = "GPA") + theme_minimal()
+total_students <- nrow(df)
+
+ggplot(mutate(count(df, GPA), pct = n / sum(n)), 
+       aes(GPA, pct, fill = GPA)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    title = paste0("Overall GPA distribution (No. of students = ", total_students, ")"),
+    x = NULL,
+    y = "% of students",
+    fill = "GPA"
+  ) +
+  theme_minimal()
 
 ```
 
 **Observation:**\
-Overall, the GPA distribution is concentrated in the mid-performance range. Most students fall within the 2.5–\<3.2 and 3.2–\<3.6 categories, while only small proportions appear at the lowest and highest ends. This indicates that the cohort largely consists of average-to-good performers rather than extreme achievers, suggesting a relatively homogeneous distribution of academic outcomes.
+Overall, the GPA distribution is concentrated in the mid-performance range. Most students fall within the 2.5 to <3.2 and 3.2 to <3.6 categories, while only small proportions appear at the lowest and highest ends. This indicates that the cohort largely consists of average-to-good performers rather than extreme achievers, suggesting a relatively homogeneous distribution of academic outcomes.
+
+### Code
+
+``` r
+total_students <- nrow(df)
+
+ggplot(mutate(count(df, GPA), pct = n / sum(n)), 
+       aes(GPA, pct, fill = GPA)) +
+  geom_col() +
+  coord_flip() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    title = paste0("Overall GPA distribution (N = ", total_students, ")"),
+    x = NULL,
+    y = "% of students",
+    fill = "GPA"
+  ) +
+  theme_minimal()
+```
+:::
 :::
 
-------------------------------------------------------------------------
 
 ::: callout-note
 ## Visualization 2 — GPA Distribution by Year {.tabset}
 
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+ggplot(mutate(group_by(count(df, Year, GPA), Year), pct = n / sum(n)), aes(Year, pct, fill = GPA)) + geom_col(position = "fill") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by year of study (No. of students = 2170)", x = NULL, y = "% of students", fill = "GPA") + theme_minimal()
+
+```
+
+**Observation:**\
+Performance patterns vary slightly across academic years. Senior students and graduates generally exhibit a higher proportion of good and excellent GPAs compared with earlier-year students. This may reflect accumulated experience, improved study strategies and better adaptation to university expectations over time. In contrast, newer students show more mid-range outcomes, possibly due to transitional challenges. The results suggest that academic achievement may improve progressively as students become more familiar with the learning environment.
+
 ### Code
 
 ``` r
 ggplot(mutate(group_by(count(df, Year, GPA), Year), pct = n / sum(n)), aes(Year, pct, fill = GPA)) + geom_col(position = "fill") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by year of study", x = NULL, y = "Share within year", fill = "GPA") + theme_minimal()
 ```
 
-### Visual
-
-```{r, echo=FALSE}
-ggplot(mutate(group_by(count(df, Year, GPA), Year), pct = n / sum(n)), aes(Year, pct, fill = GPA)) + geom_col(position = "fill") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by year of study", x = NULL, y = "Share within year", fill = "GPA") + theme_minimal()
-
-```
-
-**Observation:**\
-Performance patterns vary slightly across academic years. Senior students and graduates generally exhibit a higher proportion of good and excellent GPAs compared with earlier-year students. This may reflect accumulated experience, improved study strategies, and better adaptation to university expectations over time. In contrast, newer students show more mid-range outcomes, possibly due to transitional challenges. The results suggest that academic achievement may improve progressively as students become more familiar with the learning environment.
+:::
 :::
 
-------------------------------------------------------------------------
 
 ::: callout-note
 ## Visualization 3 — Social media time vs GPA {.tabset}
 
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+ggplot(mutate(group_by(count(df, Year, Time_SocicalMedia, GPA), Year, Time_SocicalMedia),pct = n / sum(n)),aes(Time_SocicalMedia, pct, fill = GPA)) + geom_col(position = "fill") + facet_wrap(~Year, ncol = 2, scales = "fixed") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by daily social media use (by year of study)", x = "Social media time per day", y = "% of Students within its group", fill = "GPA") + theme_minimal() + theme(
+    axis.text = element_text(size = 8), axis.title = element_text(size = 9), strip.text = element_text(size = 10, face = "bold"))
+
+```
+
+**Observation:**\
+Across all academic years, heavier daily social media use is associated with a slightly lower share of strong academic outcomes. Students spending more than three to four hours per day tend to show comparatively fewer high GPA and relatively more mid range results. Although the differences are modest rather than dramatic, the pattern is consistent across cohorts.
+
 ### Code
 
 ``` r
 ggplot(mutate(group_by(count(df, Year, Time_SocicalMedia, GPA), Year, Time_SocicalMedia),pct = n / sum(n)),aes(Time_SocicalMedia, pct, fill = GPA)) + geom_col(position = "fill") + facet_wrap(~Year, ncol = 2, scales = "fixed") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by daily social media use (by Year)", x = "Social media time per day", y = "Share within group", fill = "GPA") + theme_minimal() + theme(
     axis.text = element_text(size = 8), axis.title = element_text(size = 9), strip.text = element_text(size = 10, face = "bold"))
 ```
-
-### Visual
-
-```{r, echo=FALSE}
-ggplot(mutate(group_by(count(df, Year, Time_SocicalMedia, GPA), Year, Time_SocicalMedia),pct = n / sum(n)),aes(Time_SocicalMedia, pct, fill = GPA)) + geom_col(position = "fill") + facet_wrap(~Year, ncol = 2, scales = "fixed") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by daily social media use (by Year)", x = "Social media time per day", y = "Share within group", fill = "GPA") + theme_minimal() + theme(
-    axis.text = element_text(size = 8), axis.title = element_text(size = 9), strip.text = element_text(size = 10, face = "bold"))
-
-```
-
-**Observation:**\
-Across all academic years, heavier daily social media use is associated with a slightly lower share of strong academic outcomes. Students spending more than three to four hours per day tend to show comparatively fewer high GPAs and relatively more mid-range results. Although the differences are modest rather than dramatic, the pattern is consistent across cohorts.
 :::
-
-------------------------------------------------------------------------
+:::
 
 ::: callout-note
 ## Visualization 4 — Study time vs GPA {.tabset}
 
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+ggplot(mutate(group_by(count(df, Year, Time_Studying, GPA),     Year, Time_Studying),pct = n / sum(n)),aes(Time_Studying, pct, fill = GPA)) + geom_col(position = "fill") + facet_wrap(~Year, ncol = 2, scales = "fixed") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by daily study time (by year of study)", x = "Study time per day", y = "% of students within its group", fill = "GPA") + theme_minimal() + theme(axis.text = element_text(size = 8), axis.title = element_text(size = 9),  strip.text = element_text(size = 10, face = "bold"))
+```
+
+**Observation:**\
+Across all academic years, students who report longer daily study hours tend to show a higher share of better GPA outcomes. Groups studying six hours or more generally contain relatively more high-performing students, while shorter study duration display a larger proportion of mid to lower range of GPA. Although the differences are moderate rather than dramatic, the pattern is consistent across cohorts. Overall, study time appears to be positively associated with academic performance.
+
 ### Code
 
 ``` r
 ggplot(mutate(group_by(count(df, Year, Time_Studying, GPA),     Year, Time_Studying),pct = n / sum(n)),aes(Time_Studying, pct, fill = GPA)) + geom_col(position = "fill") + facet_wrap(~Year, ncol = 2, scales = "fixed") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by daily study time (by Year)", x = "Study time per day", y = "Share within group", fill = "GPA") + theme_minimal() + theme(axis.text = element_text(size = 8), axis.title = element_text(size = 9),  strip.text = element_text(size = 10, face = "bold"))
 ```
-
-### Visual
-
-```{r, echo=FALSE}
-ggplot(mutate(group_by(count(df, Year, Time_Studying, GPA),     Year, Time_Studying),pct = n / sum(n)),aes(Time_Studying, pct, fill = GPA)) + geom_col(position = "fill") + facet_wrap(~Year, ncol = 2, scales = "fixed") + scale_y_continuous(labels = scales::percent_format()) + labs(title = "GPA composition by daily study time (by Year)", x = "Study time per day", y = "Share within group", fill = "GPA") + theme_minimal() + theme(axis.text = element_text(size = 8), axis.title = element_text(size = 9),  strip.text = element_text(size = 10, face = "bold"))
-```
-
-**Observation:**\
-Across all academic years, students who report longer daily study hours tend to show a higher share of good and excellent GPA outcomes. Groups studying six hours or more generally contain relatively more high-performing students, while shorter study durations display a larger proportion of mid-to-lower GPAs. Although the differences are moderate rather than dramatic, the pattern is consistent across cohorts. Overall, study time appears to be positively associated with academic performance, though other factors may also play a role.
+:::
 :::
 
-------------------------------------------------------------------------
 
 ::: callout-note
 ## Visualization 5 — University vs Lecturer support {.tabset}
 
-### Code
-
-``` r
-p5_uni_support <- plot_likert_stack(df, "SupportOf_Uni", "Perceived university support")
-
-p5_lec_support <- plot_likert_stack(df, "SupportOf_Lec", "Perceived lecturer support")
-
-p5_uni_support / p5_lec_support
-```
-
+::: panel-tabset
 ### Visual
 
 ```{r, echo=FALSE}
@@ -170,62 +190,75 @@ p5_uni_support / p5_lec_support
 ```
 
 **Observation:**\
-Perceptions of both university and lecturer support are strongly positive, with most responses concentrated in the “Quite” and “Very” supportive categories. Lecturer support appears marginally stronger than institutional support, indicating that direct interaction with teaching staff may have a greater perceived impact on learning. Negative responses are minimal, suggesting that students generally feel well assisted academically and administratively. Such supportive conditions likely contribute to maintaining stable and satisfactory learning outcomes.
-:::
-
-------------------------------------------------------------------------
-
-::: callout-note
-## Visualization 6 — Correlation heatmap {.tabset}
+Perceptions of both university and lecturer support are strongly positive, with most responses concentrated in the “Quite” and “Very” supportive categories. Lecturer support appears marginally stronger than university support, indicating that direct interaction with teaching staff may have a greater perceived impact on learning. Negative responses are minimal, suggesting that students generally feel well assisted academically and administratively. Such supportive conditions likely contribute to maintaining stable and satisfactory learning outcomes.
 
 ### Code
 
 ``` r
+p5_uni_support <- plot_likert_stack(df, "SupportOf_Uni", "Perceived university support")
 
-likert_vars <- c("Adapt_Learning_Uni","Study_Methods","SupportOf_Uni","SupportOf_Lec", "Facilitie_Uni","Quality_Lecturer","TrainingCurriculum","Competitive_Class","InfuenceF_Friends")
+p5_lec_support <- plot_likert_stack(df, "SupportOf_Lec", "Perceived lecturer support")
 
-nice_labels <- c("Adaptation","Study Methods","Uni Support","Lecturer Support","Facilities","Lecturer Quality","Curriculum", "Competition","Peer Influence")
-
-df2 <- select(df, all_of(likert_vars))
-df2 <- drop_na(df2)
-
-corr_mat <- cor(df2, method = "spearman")
-
-colnames(corr_mat) <- nice_labels
-rownames(corr_mat) <- nice_labels
-
-
-corr_long <- as.data.frame(as.table(corr_mat))
-corr_long <- rename(corr_long, var1 = Var1, var2 = Var2, rho = Freq)
-
-ggplot(corr_long, aes(var1, var2, fill = rho)) + geom_tile(color = "white") + coord_equal() + scale_fill_gradient2(low = "#d73027",   mid = "white", high = "#4575b4", midpoint = 0, limits = c(-1,1)) +
-labs(title = "Spearman Correlation Among Learning Environment Factors", x = NULL, y = NULL, fill = "ρ") + theme_minimal(base_size = 12) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), axis.text.y = element_text(size = 11), panel.grid = element_blank())
+p5_uni_support / p5_lec_support
 ```
 
+:::
+:::
+
+
+::: callout-note
+## Visualization 6 — Correlation heatmap {.tabset}
+
+::: panel-tabset
 ### Visual
 
 ```{r, echo=FALSE, fig.width=9, fig.height=8}
 likert_vars <- c("Adapt_Learning_Uni","Study_Methods","SupportOf_Uni","SupportOf_Lec", "Facilitie_Uni","Quality_Lecturer","TrainingCurriculum","Competitive_Class","InfuenceF_Friends")
 
-nice_labels <- c("Adaptation","Study Methods","Uni Support","Lecturer Support","Facilities","Lecturer Quality","Curriculum", "Competition","Peer Influence")
+likert_labels <- c("Adaptation","Study Methods","Uni Support","Lecturer Support","Facilities","Lecturer Quality","Curriculum", "Competition","Peer Influence")
 
 df2 <- select(df, all_of(likert_vars))
 df2 <- drop_na(df2)
 
 corr_mat <- cor(df2, method = "spearman")
 
-colnames(corr_mat) <- nice_labels
-rownames(corr_mat) <- nice_labels
+colnames(corr_mat) <- likert_labels
+rownames(corr_mat) <- likert_labels
 
 
 corr_long <- as.data.frame(as.table(corr_mat))
 corr_long <- rename(corr_long, var1 = Var1, var2 = Var2, rho = Freq)
 
 ggplot(corr_long, aes(var1, var2, fill = rho)) + geom_tile(color = "white") + coord_equal() + scale_fill_gradient2(low = "#d73027",   mid = "white", high = "#4575b4", midpoint = 0, limits = c(-1,1)) +
-labs(title = "Spearman Correlation Among Learning Environment Factors", x = NULL, y = NULL, fill = "ρ") + theme_minimal(base_size = 12) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), axis.text.y = element_text(size = 11), panel.grid = element_blank())
+labs(title = "Correlation Among Learning Environment Factors", x = NULL, y = NULL, fill = "ρ") + theme_minimal(base_size = 12) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), axis.text.y = element_text(size = 11), panel.grid = element_blank())
 
 ```
 
 **Observation:**\
-The heatmap shows moderate positive relationships among several learning environment factors. Adaptation, effective study methods, and lecturer quality tend to move together, indicating that these aspects reinforce one another. Students perceiving strong teaching quality also report better adjustment and learning behaviours. However, correlations are not excessively high, suggesting each factor contributes uniquely to outcomes. Overall, academic performance appears to be shaped by multiple interconnected yet distinct elements of the learning experience rather than any single dominant driver.
+The heatmap shows moderate positive relationships among several learning environment factors. Adaptation, effective study methods, and lecturer quality tend to move together, indicating that these aspects reinforce one another. Students perceiving strong teaching quality also report better adjustment and learning behaviors. However, correlations are not excessively high, suggesting each factor contributes uniquely to outcomes. Overall, academic performance appears to be shaped by multiple interconnected yet distinct elements of the learning experience rather than any single dominant driver.
+
+### Code
+
+``` r
+
+likert_vars <- c("Adapt_Learning_Uni","Study_Methods","SupportOf_Uni","SupportOf_Lec", "Facilitie_Uni","Quality_Lecturer","TrainingCurriculum","Competitive_Class","InfuenceF_Friends")
+
+likert_labels <- c("Adaptation","Study Methods","Uni Support","Lecturer Support","Facilities","Lecturer Quality","Curriculum", "Competition","Peer Influence")
+
+df2 <- select(df, all_of(likert_vars))
+df2 <- drop_na(df2)
+
+corr_mat <- cor(df2, method = "spearman")
+
+colnames(corr_mat) <- likert_labels
+rownames(corr_mat) <- likert_labels
+
+
+corr_long <- as.data.frame(as.table(corr_mat))
+corr_long <- rename(corr_long, var1 = Var1, var2 = Var2, rho = Freq)
+
+ggplot(corr_long, aes(var1, var2, fill = rho)) + geom_tile(color = "white") + coord_equal() + scale_fill_gradient2(low = "#d73027",   mid = "white", high = "#4575b4", midpoint = 0, limits = c(-1,1)) +
+labs(title = "Correlation Among Learning Environment Factors", x = NULL, y = NULL, fill = "ρ") + theme_minimal(base_size = 12) + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), axis.text.y = element_text(size = 11), panel.grid = element_blank())
+```
+:::
 :::
