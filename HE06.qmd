@@ -17,7 +17,7 @@ execute:
 Install and launch the following R packages
 
 ```{r}
-pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, CGPfunctions, ggHoriPlot, tidyverse, CGPfunctions)
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, CGPfunctions, tidyverse)
 ```
 
 ## 2.0 Data
@@ -235,6 +235,6 @@ rice %>%
   newggslopegraph(Year, Yield, Country,
                 Title = "Rice Yield of Top 11 Asian Counties",
                 SubTitle = "1961-1980",
-                Caption = "Prepared by: Dr. Kam Tin Seong")
+                Caption = "Prepared by: Teong Sze Ching")
 
 ```
