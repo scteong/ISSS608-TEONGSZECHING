@@ -21,10 +21,16 @@ website:
             href: "HE05.html"
           - text: "Hands-on Exercise 7"
             href: "HE07.html"
+          - text: "Hands-on Exercise 8"
+            href: "HE08.html"
       - text: "Take-home Exercise" 
         menu: 
           - text: "Take-home Exercise 1"
             href: "TE01.html"
+      - text: "Take-home Exercise" 
+        menu: 
+          - text: "Take-home Exercise 2"
+            href: "TE02.html"
     right: 
       - text: "Index"
         href: "index.html"
