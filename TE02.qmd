@@ -1,0 +1,164 @@
+---
+title: "Take-Home Exercise 2"
+author: "Teong Sze Ching"
+date: "March 3, 2026"
+date-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+# Background
+
+Singapore’s resident total fertility rate (TFR) has dropped to a historic low of 0.87 (extracted from CNA news article dated 26 Feb 2026), and policymakers have flagged low fertility and rapid ageing as a major national challenge.
+
+However, fertility is influenced by multiple interacting factors (marriage patterns, divorce trends, and birth postponement across age groups), and these indicators are often published as separate series. 
+
+This project builds an interactive visual analytics Shiny module to help users explore when key shifts occurred, which age bands drove fertility changes, and how strongly fertility co-moves with marriage/divorce trends (including possible lag effects).
+
+## 1.0 Getting Started
+
+Install and launch the following R packages
+
+```{r}
+pacman::p_load(tidyverse, readxl, patchwork, scales)
+```
+
+## 2.0 Data
+
+Loading the data to the R environment. Dataset was extracted from CEIC database. 
+
+```{r}
+
+```
+
+## 3.0 Data Preparation
+
+To prepare the dataset for analysis and visualization, data cleaning and recoding steps were performed.
+
+
+```{r}
+
+```
+
+
+------------------------------------------------------------------------
+
+## 4.0 EDA
+
+Goal of this is to understand temporal patterns before modelling.
+
+Key Questions:
+1. When did fertility begin declining?
+2. Are marriage and fertility visually moving together?
+3. Is fertility shifting toward older age groups?
+
+:::: callout-note
+## Visualization 1 - Total Fertility rate {.tabset}
+
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+
+```
+
+**Observation:**\
+TBA
+
+### Code
+
+``` r
+
+```
+:::
+::::
+
+:::: callout-note
+## Visualization 2 - Marriage rate {.tabset}
+
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+
+```
+
+**Observation:**\
+xxx
+
+### Code
+
+``` r
+
+```
+:::
+::::
+
+:::: callout-note
+## Visualization 3 - Divorce rate {.tabset}
+
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+
+```
+
+**Observation:**\
+xxx
+
+### Code
+
+``` r
+
+```
+:::
+::::
+
+:::: callout-note
+## Visualization 4 - Age-specific / Age group fertility rates  {.tabset}
+
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+
+```
+
+**Observation:**\
+xxx
+
+### Code
+
+``` r
+
+```
+:::
+::::
+
+:::: callout-note
+## Visualization 5 - Ageing population trend {.tabset}
+
+::: panel-tabset
+### Visual
+
+```{r, echo=FALSE}
+
+
+```
+
+**Observation:**\
+xxx
+
+### Code
+
+``` r
+
+```
+:::
+::::
+
+

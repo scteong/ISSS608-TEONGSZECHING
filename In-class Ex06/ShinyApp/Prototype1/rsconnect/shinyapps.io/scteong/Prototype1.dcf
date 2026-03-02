@@ -1,0 +1,12 @@
+name: Prototype1
+title: Prototype1
+username: scteong
+account: scteong
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16729679
+bundleId: 11610415
+url: https://scteong.shinyapps.io/Prototype1/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
