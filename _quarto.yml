@@ -23,12 +23,14 @@ website:
             href: "HE07.html"
           - text: "Hands-on Exercise 8"
             href: "HE08.html"
+          - text: "Hands-on Exercise 9"
+            href: "HE09.html"
+          - text: "Hands-on Exercise 10"
+            href: "HE10.html"
       - text: "Take-home Exercise" 
         menu: 
           - text: "Take-home Exercise 1"
             href: "TE01.html"
-      - text: "Take-home Exercise" 
-        menu: 
           - text: "Take-home Exercise 2"
             href: "TE02.html"
     right: 
