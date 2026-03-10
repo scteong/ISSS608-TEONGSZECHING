@@ -18,6 +18,10 @@ The goal of this project is to build an interactive dashboard that helps users e
 
 This take home exercise 2 serve as the prototype for this project.
 
+```{r}
+knitr::include_graphics("TE02/article.jpg")
+```
+
 ## 1.0 Getting Started
 
 Install and launch the following R packages
@@ -691,9 +695,13 @@ The prototype will first be developed and tested in Quarto using R code and stat
 
 The Home Page is designed to provide users with a high-level overview of Singapore’s fertility trends and the main purpose of the dashboard. It will include a short introduction to the issue of declining fertility, headline indicators such as the latest total fertility rate, and a brief explanation of the three main areas of analysis: trend exploration, Correlation analysis, and relationship analysis with marriage and divorce indicators.
 
-The purpose of this page is to orient users before they move into the detailed analytical sections. It should be simple, clean, and informative, allowing users to quickly understand what the dashboard is about and what questions it can help answer. This will be completed by group member Enqi. 
+The purpose of this page is to orient users before they move into the detailed analytical sections. It allows users to quickly understand what the dashboard is about and what questions it can help answer. 
 
-\[IMAGE\]
+This will be completed by group member Enqi.
+
+```{r}
+knitr::include_graphics("TE02/home.png")
+```
 
 ### 6.2 Figure 2: Proposed layout of the EDA page
 
@@ -703,19 +711,33 @@ The purpose of this page is to help users identify broad patterns before moving 
 
 Possible Shiny UI components for this page include: (1) sliderInput() for year range, (2) radioButtons() for selecting age bands, (3) using plotOutput() for interactive charts
 
-![Proposed EDA design](TE02/EDA.png)
-
-
-
+```{r}
+knitr::include_graphics("TE02/EDA.png")
+```
 
 ### 6.3 Figure 3: Proposed layout of the Analytical Tasks
 
 The Analytical Tasks page will support deeper investigation into the relationship between fertility and related demographic indicators. This section will contain separate modules for correlation analysis and regression analysis.
 
 #### 6.3.1 Correlation Analysis
-This will be completed by group member Enqi. 
+
+The Correlation Analysis page is designed to let users interactively examine how fertility is associated with marriage and divorce indicators across different time periods and analytical settings.
+
+The layout will consist of a control panel on the left and an output panel on the right. In the control panel, users will be able to filter the year range to focus on a selected analysis period. 
+
+The output panel will display three main elements. First, a clustered correlation plot will summarise the overall correlation structure between total fertility rate, marriage, and divorce indicators. Second, a hierarchical clustering dendrogram will group years according to similar combinations of fertility, marriage, and divorce patterns so that users can identify broad phases in the demographic series. Third, a rolling correlation chart will show how the correlation between fertility and each indicator changes across time windows, allowing users to assess whether the observed relationships are stable or time-varying.
+
+Possible Shiny UI components for this page include: (1) sliderInput() for year range, (2) plotOutput() for the clustered correlation plot, (3) plotOutput() for the hierarchical clustering dendrogram, and (4) plotOutput() for the rolling correlation chart.
+
+This will be completed by group member Enqi.
+
+
+```{r}
+knitr::include_graphics("TE02/corr.png")
+```
 
 #### 6.3.2 Regression Analysis
+
 The Regression Analysis page is designed to let users interactively examine whether fertility is associated with marriage and divorce indicators under different lag assumptions.
 
 The layout will consist of a control panel on the left and an output panel on the right. In the control panel, users will be able to choose whether the regression should use marriage only, divorce only, or both predictors together. Users will also be able to specify the delayed effect by adjusting separate lag values for marriage and divorce. A lag value of 0 will correspond to the baseline same-year model, while higher lag values will represent delayed-effect models.
@@ -724,13 +746,12 @@ The output panel will display three main elements. First, a regression results t
 
 Possible Shiny UI components for this page include: (1) radioButtons() for choosing regression specification: marriage only, divorce only, or both, (2) sliderInput() for marriage lag, (3) sliderInput() for divorce lag, (4) tableOutput() for regression results, (5) plotOutput() for the R2 column chart, (6) plotOutput() for the lagged scatterplots
 
-![Proposed Regression design](TE02/regression.png)
-
-
-
+```{r}
+knitr::include_graphics("TE02/regression.png")
+```
 
 ### 6.4 Conclusion
 
 Overall, this prototype outlines the initial design of a Shiny dashboard for exploring Singapore’s fertility trends. The dashboard is intended to help users understand how fertility has changed over time and how fertility is associated with marriage and divorce indicators.
 
-The design combines exploratory visualisation and analytical modelling within a single interactive application. By including filters, the dashboard allows users to tailor the analysis to their own interests. 
+The design combines exploratory visualisation and analytical modelling within a single interactive application. By including filters, the dashboard allows users to tailor the analysis to their own interests.
