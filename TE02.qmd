@@ -685,7 +685,7 @@ ggplot(lag_tbl, aes(x = model, y = r_squared)) +
 :::
 ::::
 
-## 6.0 UI Design
+## 6.0 UI Design / Storyboard
 
 Below is the proposed UI design for the Shiny application. Since this dashboard is developed as a group project, the general UI structure will be shared across group members. However, the analytical modules displayed within the application may differ according to each member’s assigned task.
 
@@ -695,7 +695,7 @@ The prototype will first be developed and tested in Quarto using R code and stat
 
 The Home Page is designed to provide users with a high-level overview of Singapore’s fertility trends and the main purpose of the dashboard. It will include a short introduction to the issue of declining fertility, headline indicators such as the latest total fertility rate, and a brief explanation of the three main areas of analysis: trend exploration, Correlation analysis, and relationship analysis with marriage and divorce indicators.
 
-The purpose of this page is to orient users before they move into the detailed analytical sections. It allows users to quickly understand what the dashboard is about and what questions it can help answer. 
+The purpose of this page is to orient users before they move into the detailed analytical sections. It allows users to quickly understand what the dashboard is about and what questions it can help answer.
 
 This will be completed by group member Enqi.
 
@@ -723,14 +723,13 @@ The Analytical Tasks page will support deeper investigation into the relationshi
 
 The Correlation Analysis page is designed to let users interactively examine how fertility is associated with marriage and divorce indicators across different time periods and analytical settings.
 
-The layout will consist of a control panel on the left and an output panel on the right. In the control panel, users will be able to filter the year range to focus on a selected analysis period. 
+The layout will consist of a control panel on the left and an output panel on the right. In the control panel, users will be able to filter the year range to focus on a selected analysis period.
 
 The output panel will display three main elements. First, a clustered correlation plot will summarise the overall correlation structure between total fertility rate, marriage, and divorce indicators. Second, a hierarchical clustering dendrogram will group years according to similar combinations of fertility, marriage, and divorce patterns so that users can identify broad phases in the demographic series. Third, a rolling correlation chart will show how the correlation between fertility and each indicator changes across time windows, allowing users to assess whether the observed relationships are stable or time-varying.
 
 Possible Shiny UI components for this page include: (1) sliderInput() for year range, (2) plotOutput() for the clustered correlation plot, (3) plotOutput() for the hierarchical clustering dendrogram, and (4) plotOutput() for the rolling correlation chart.
 
 This will be completed by group member Enqi.
-
 
 ```{r}
 knitr::include_graphics("TE02/corr.png")
@@ -755,3 +754,15 @@ knitr::include_graphics("TE02/regression.png")
 Overall, this prototype outlines the initial design of a Shiny dashboard for exploring Singapore’s fertility trends. The dashboard is intended to help users understand how fertility has changed over time and how fertility is associated with marriage and divorce indicators.
 
 The design combines exploratory visualisation and analytical modelling within a single interactive application. By including filters, the dashboard allows users to tailor the analysis to their own interests.
+
+## 7.0 Package Selection Justification
+
+To support the development of the Shiny application, our group selected packages based on clarity of output, ease of integration with Shiny, interpretability and suitability for the project scope.
+
+For visualisation, we selected **ggplot2** as the main charting library because it produces clear and consistent visual output, is easy to customise, and integrates well with Shiny through **plotOutput()**. It is well suited for presenting demographic time-series trends, scatterplots and rolling correlation charts in a structured and readable format.
+
+For correlation analysis, we used the **cor()** function to compute correlation matrices and the **corrplot** package to visualise them. This library was selected because it provides clear graphical representations of correlation structures, including clustered correlation matrices that help highlight relationships among fertility, marriage, and divorce indicators.
+
+For arranging multiple charts in the same output view, we used **patchwork** because it allows plots to be combined in a simple and flexible way while keeping the code readable.
+
+For statistical modelling, we used **lm()** for regression because they are sufficient for the scope of this project. Since the Shiny app is intended to support interactive exploration, simpler and more explainable models were preferred.

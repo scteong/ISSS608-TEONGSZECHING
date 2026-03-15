@@ -221,13 +221,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda">4.0 EDA</a></li>
   <li><a href="#analytical-tasks" id="toc-analytical-tasks" class="nav-link" data-scroll-target="#analytical-tasks">5.0 Analytical Tasks</a></li>
-  <li><a href="#ui-design" id="toc-ui-design" class="nav-link" data-scroll-target="#ui-design">6.0 UI Design</a>
+  <li><a href="#ui-design-storyboard" id="toc-ui-design-storyboard" class="nav-link" data-scroll-target="#ui-design-storyboard">6.0 UI Design / Storyboard</a>
   <ul class="collapse">
   <li><a href="#figure-1-proposed-summary-layout-home-page" id="toc-figure-1-proposed-summary-layout-home-page" class="nav-link" data-scroll-target="#figure-1-proposed-summary-layout-home-page">6.1 Figure 1: Proposed summary layout / Home Page</a></li>
   <li><a href="#figure-2-proposed-layout-of-the-eda-page" id="toc-figure-2-proposed-layout-of-the-eda-page" class="nav-link" data-scroll-target="#figure-2-proposed-layout-of-the-eda-page">6.2 Figure 2: Proposed layout of the EDA page</a></li>
   <li><a href="#figure-3-proposed-layout-of-the-analytical-tasks" id="toc-figure-3-proposed-layout-of-the-analytical-tasks" class="nav-link" data-scroll-target="#figure-3-proposed-layout-of-the-analytical-tasks">6.3 Figure 3: Proposed layout of the Analytical Tasks</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">6.4 Conclusion</a></li>
   </ul></li>
+  <li><a href="#package-selection-justification" id="toc-package-selection-justification" class="nav-link" data-scroll-target="#package-selection-justification">7.0 Package Selection Justification</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 10, 2026</p>
+      <p class="date-modified">March 15, 2026</p>
     </div>
   </div>
     
@@ -1010,8 +1011,8 @@ The lagged regression models examine whether earlier marriage and divorce patter
 </div>
 </div>
 </section>
-<section id="ui-design" class="level2">
-<h2 class="anchored" data-anchor-id="ui-design">6.0 UI Design</h2>
+<section id="ui-design-storyboard" class="level2">
+<h2 class="anchored" data-anchor-id="ui-design-storyboard">6.0 UI Design / Storyboard</h2>
 <p>Below is the proposed UI design for the Shiny application. Since this dashboard is developed as a group project, the general UI structure will be shared across group members. However, the analytical modules displayed within the application may differ according to each member’s assigned task.</p>
 <p>The prototype will first be developed and tested in Quarto using R code and static outputs. It will then be adapted into a Shiny dashboard with interactive controls such as filters.</p>
 <section id="figure-1-proposed-summary-layout-home-page" class="level3">
@@ -1089,9 +1090,17 @@ The lagged regression models examine whether earlier marriage and divorce patter
 <h3 class="anchored" data-anchor-id="conclusion">6.4 Conclusion</h3>
 <p>Overall, this prototype outlines the initial design of a Shiny dashboard for exploring Singapore’s fertility trends. The dashboard is intended to help users understand how fertility has changed over time and how fertility is associated with marriage and divorce indicators.</p>
 <p>The design combines exploratory visualisation and analytical modelling within a single interactive application. By including filters, the dashboard allows users to tailor the analysis to their own interests.</p>
-
-
 </section>
+</section>
+<section id="package-selection-justification" class="level2">
+<h2 class="anchored" data-anchor-id="package-selection-justification">7.0 Package Selection Justification</h2>
+<p>To support the development of the Shiny application, our group selected packages based on clarity of output, ease of integration with Shiny, interpretability and suitability for the project scope.</p>
+<p>For visualisation, we selected <strong>ggplot2</strong> as the main charting library because it produces clear and consistent visual output, is easy to customise, and integrates well with Shiny through <strong>plotOutput()</strong>. It is well suited for presenting demographic time-series trends, scatterplots and rolling correlation charts in a structured and readable format.</p>
+<p>For correlation analysis, we used the <strong>cor()</strong> function to compute correlation matrices and the <strong>corrplot</strong> package to visualise them. This library was selected because it provides clear graphical representations of correlation structures, including clustered correlation matrices that help highlight relationships among fertility, marriage, and divorce indicators.</p>
+<p>For arranging multiple charts in the same output view, we used <strong>patchwork</strong> because it allows plots to be combined in a simple and flexible way while keeping the code readable.</p>
+<p>For statistical modelling, we used <strong>lm()</strong> for regression because they are sufficient for the scope of this project. Since the Shiny app is intended to support interactive exploration, simpler and more explainable models were preferred.</p>
+
+
 </section>
 </section>
 
