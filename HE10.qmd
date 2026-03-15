@@ -19,8 +19,7 @@ execute:
 Install and launch the following R packages
 
 ```{r}
-pacman::p_load(lubridate, ggthemes, reactable,
-reactablefmtr, gt, gtExtras, tidyverse)
+pacman::p_load(lubridate, ggthemes, reactable, reactablefmtr, gt, gtExtras, tidyverse)
 ```
 
 ## 2.0 Importing database into R

@@ -3,3 +3,8 @@ title: "ISSS608-- Coursework Website for TEONG SZE CHING"
 ---
 
 **Welcome to my coursework website** 🙂🤗
+
+```{r, echo=FALSE}
+knitr::include_graphics("learning.jpg")
+```
+Image from Pexels, royalty free image.
